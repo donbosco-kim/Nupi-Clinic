@@ -29,7 +29,8 @@ namespace Nupi_Clinic
 
         private void Register_button_click(object sender, RoutedEventArgs e)
         {
-            
+            RegisterPage win = new RegisterPage();
+            win.Show();
         }
 
         private void Close_button_click(object sender, RoutedEventArgs e)
