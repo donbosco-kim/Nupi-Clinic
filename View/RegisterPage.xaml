@@ -1,12 +1,54 @@
-﻿<UserControl x:Class="Nupi_Clinic.View.RegisterPage"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:Nupi_Clinic.View"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+﻿<Window x:Class="Nupi_Clinic.View.RegisterPage"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Nupi_Clinic.View"
+        mc:Ignorable="d"
+        Title="RegisterPage" Height="400" Width="400">
     <Grid>
-            
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+
+        <!--<Button Grid.Row="0" Grid.Column="1" x:Name="close" Click="Close_button_click" Width="20" Height="20" Background="Red" Foreground="White" Margin="170,0,0,170">X</Button>-->
+
+        <TextBlock Foreground="Black" Text="Registeration" FontSize="20" HorizontalAlignment="Center" Grid.ColumnSpan="2"></TextBlock>
+
+        <StackPanel>
+            <!--prompt-->
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="0,50,0,0">
+                <TextBlock Foreground="Black" FontSize="15" Margin="0,0,0,5">First Name</TextBlock>
+                <TextBlock Foreground="Black" FontSize="15" Margin="0,0,0,5">Last Name</TextBlock>
+                <TextBlock Foreground="Black" FontSize="15" Margin="0,0,0,5">User Name</TextBlock>
+                <TextBlock Foreground="Black" FontSize="15" Margin="0,0,0,5">Password</TextBlock>
+                <TextBlock Foreground="Black" FontSize="15" Margin="0,0,0,5">Confirm Password</TextBlock>
+            </StackPanel>
+
+        </StackPanel>
+        <!--Input-->
+        <StackPanel Grid.Row="0" Grid.Column="1">
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="0,50,0,0">
+                <TextBox Name="admin_first_name" Height="20" Width="150" Margin="0,0,0,5"></TextBox>
+                <TextBox Name="admin_last_name" Height="20" Width="150" Margin="0,0,0,5"></TextBox>
+                <TextBox Name="user_name" Height="20" Width="150" Margin="0,0,0,5"></TextBox>
+                <PasswordBox Name="password" Height="20" Width="150" Margin="0,0,0,5"></PasswordBox>
+                <PasswordBox Name="confirmpassword" Height="20" Width="150" Margin="0,0,0,5"></PasswordBox>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.ColumnSpan="2">
+            <StackPanel Orientation="Horizontal">
+                <Button Name="btnsubmit" Click="submit_button_click" Width="100" Height="35" Margin="20,45,0,0">Submit</Button>
+                <Button Name="btnreset" Click="reset_button_click" Width="100" Height="35" Margin="30,45,0,0">Reset</Button>
+                <Button Name="btncancel" Click="cancel_button_click" Width="100" Height="35" Margin="30,45,0,0">Cancel</Button>
+            </StackPanel>
+        </StackPanel>
+
     </Grid>
-</UserControl>
+</Window>

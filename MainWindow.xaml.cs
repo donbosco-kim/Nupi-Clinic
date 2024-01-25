@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using Nupi_Clinic.View;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -28,7 +29,7 @@ namespace Nupi_Clinic
 
         private void Register_button_click(object sender, RoutedEventArgs e)
         {
-
+            
         }
 
         private void Close_button_click(object sender, RoutedEventArgs e)

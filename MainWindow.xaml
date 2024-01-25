@@ -5,10 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Nupi_Clinic"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="380" WindowStartupLocation="CenterScreen"
+        Title="MainWindow" Height="450" Width="400" WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize">
+	<Window.Resources>
+		<ResourceDictionary>
+			<Style x:Key="btns" TargetType="{x:Type Button}">
+				<Setter Property="Height" Value="60"/>
+				<Setter Property="FontSize" Value="20"/>
+			</Style>
+		</ResourceDictionary>
+	</Window.Resources>
+	
     <Grid>
-        <Grid>
+		<Grid.ColumnDefinitions>
+		</Grid.ColumnDefinitions>
+		
             <Grid.RowDefinitions>
                 <RowDefinition/>
                 <RowDefinition/>
@@ -22,21 +33,20 @@
 
             <StackPanel Grid.Row="1" HorizontalAlignment="Center">
                 <StackPanel Orientation="Horizontal">
-                    <TextBlock Text="User" FontSize="15" Foreground="Black"></TextBlock>
-                    <TextBox Name="user_name" FontWeight="Light" FontSize="15" Width="235" Margin="37,0,0,0"/>
+                    <TextBlock Text="Username" FontSize="15" Foreground="Black"></TextBlock>
+                    <TextBox Name="user_name" FontWeight="Light" FontSize="15" Width="235" Margin="7,0,0,0"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal">
                     <TextBlock Text="Password" FontSize="15" Foreground="Black"></TextBlock>
-                    <PasswordBox Name="password" FontSize="15" Width="235" Margin="5,0,0,0"/>
+                    <PasswordBox Name="password" FontSize="15" Width="235" Margin="12,0,0,0"/>
                 </StackPanel>
                 <StackPanel Orientation="Horizontal" Margin="0,40,0,0" HorizontalAlignment="Center">
-                    <Button x:Name="btnlogin" Click="Login_button_click" Width="100" Height="35" Margin="0,0,60,0">Login</Button>
-                    <Button x:Name="btnregister" Click="Register_button_click" Width="100" Height="35">Register</Button>
+                    <Button Style="{StaticResource btns}" Content="Login" Click="Login_button_click" Width="100" Height="35" Margin="0,0,60,0"/>
+                    <Button Style="{StaticResource btns}" Content="Register" Click="Register_button_click" Width="100" Height="35"/>
                 </StackPanel>
             </StackPanel>
+		<ContentControl x:Name="CC" Grid.Column="0" Grid.Row="0" Grid.RowSpan="2"/>
 
         </Grid>
-
-    </Grid>
     
 </Window>
