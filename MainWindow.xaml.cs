@@ -20,5 +20,20 @@ namespace Nupi_Clinic
         {
             InitializeComponent();
         }
+
+        private void Login_button_click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Register_button_click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Close_button_click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
+        }
     }
 }

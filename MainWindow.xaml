@@ -5,8 +5,38 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Nupi_Clinic"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="MainWindow" Height="450" Width="380" WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize">
     <Grid>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            
+            <StackPanel Grid.Row="0">
+                <!--<Button x:Name="close" Click="Close_button_click" Width="20" Background="Red" Foreground="White" Margin="350,5,0,0">X</Button>-->
+
+                <TextBlock Text="NuPi Clinic" FontSize="25" Foreground="Orange" HorizontalAlignment="Center" Margin="0,40,0,0"></TextBlock>
+            </StackPanel>
+
+            <StackPanel Grid.Row="1" HorizontalAlignment="Center">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="User" FontSize="15" Foreground="Black"></TextBlock>
+                    <TextBox Name="user_name" FontWeight="Light" FontSize="15" Width="235" Margin="37,0,0,0"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Password" FontSize="15" Foreground="Black"></TextBlock>
+                    <PasswordBox Name="password" FontSize="15" Width="235" Margin="5,0,0,0"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="0,40,0,0" HorizontalAlignment="Center">
+                    <Button x:Name="btnlogin" Click="Login_button_click" Width="100" Height="35" Margin="0,0,60,0">Login</Button>
+                    <Button x:Name="btnregister" Click="Register_button_click" Width="100" Height="35">Register</Button>
+                </StackPanel>
+            </StackPanel>
+
+        </Grid>
 
     </Grid>
+    
 </Window>
