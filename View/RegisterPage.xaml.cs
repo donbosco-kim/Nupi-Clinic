@@ -1,4 +1,5 @@
-﻿using Nupi_Clinic.Model;
+﻿using Nupi_Clinic.Data;
+using Nupi_Clinic.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -39,8 +40,10 @@ namespace Nupi_Clinic.View
 
             else
             {
-                Admin_Info add = new(admin_first_name.Text.Trim(), admin_last_name.Text.Trim(), user_name.Text.Trim(), password.Password.Trim());
-                //DBAdmin.AddAdmin(add);
+                DBAdmin newAdmin = new DBAdmin();
+                Admin_Info? add = new(admin_first_name.Text.Trim(), admin_last_name.Text.Trim(), user_name.Text.Trim(), password.Password.Trim());
+                newAdmin.AddAdmin(add);
+                this.Close();
             }
         }
 
