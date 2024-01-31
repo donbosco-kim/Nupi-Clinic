@@ -48,34 +48,44 @@ namespace Nupi_Clinic.Data
             string query = "INSERT INTO ClinicDB.Admins VALUES(@firstName, @lastName, @userName, @Password)";
             string hashedPassword = ComputeSha256Hash(admin.Password);
 
+            SqlConnection? con = null;
+
             try
             {
-                using (SqlConnection con = connector.OpenConnection())
-                {
-                    if (con.State == ConnectionState.Open)
-                    {
-                        using (SqlCommand cmd = new SqlCommand(query, con))
-                        {
-                            cmd.CommandType = CommandType.Text;
-                            cmd.Parameters.Add("@firstName", SqlDbType.VarChar).Value = admin.firstName;
-                            cmd.Parameters.Add("@lastName", SqlDbType.VarChar).Value = admin.lastName;
-                            cmd.Parameters.Add("@userName", SqlDbType.VarChar).Value = admin.userName;
-                            cmd.Parameters.Add("@Password", SqlDbType.VarChar).Value = hashedPassword;
+                con = connector.OpenConnection();
 
-                            cmd.ExecuteNonQuery();
-                            MessageBox.Show("Added Successfully.");
-                        }
-                    }
-                    else
+                if (con.State == ConnectionState.Open)
+                {
+                    using (SqlCommand cmd = new SqlCommand(query, con))
                     {
-                        MessageBox.Show("Database connection is not open.");
+                        cmd.CommandType = CommandType.Text;
+                        cmd.Parameters.Add("@firstName", SqlDbType.VarChar).Value = admin.firstName;
+                        cmd.Parameters.Add("@lastName", SqlDbType.VarChar).Value = admin.lastName;
+                        cmd.Parameters.Add("@userName", SqlDbType.VarChar).Value = admin.userName;
+                        cmd.Parameters.Add("@Password", SqlDbType.VarChar).Value = hashedPassword;
+
+                        cmd.ExecuteNonQuery();
+                        MessageBox.Show("Added Successfully.");
                     }
+                }
+                else
+                {
+                    MessageBox.Show("Database connection is not open.");
                 }
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+            finally
+            {
+                // Close the connection in a finally block to ensure it gets closed
+                if (con != null && con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                }
+            }
         }
+
     }
 }
