@@ -1,4 +1,6 @@
-﻿using Nupi_Clinic.View;
+﻿using Nupi_Clinic.Data;
+using Nupi_Clinic.View;
+using Nupi_Clinic.Model;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -24,8 +26,21 @@ namespace Nupi_Clinic
 
         private void Login_button_click(object sender, RoutedEventArgs e)
         {
+            DBAdmin dBAdmin = new DBAdmin();
+            string hashedPassword = dBAdmin.ComputeSha256Hash(password.Password);
 
+            if (dBAdmin.Login(user_name.Text, hashedPassword))
+            {
+                //direct to MainPage
+                MainPage main = new MainPage();
+                main.Show();
+            }
+            else
+            {
+                MessageBox.Show("Incorrect UserName or Password");
+            }
         }
+
 
         private void Register_button_click(object sender, RoutedEventArgs e)
         {
