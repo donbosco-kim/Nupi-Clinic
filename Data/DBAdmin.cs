@@ -11,6 +11,8 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Collections;
+using Nupi_Clinic.View;
 
 namespace Nupi_Clinic.Data
 {
@@ -88,5 +90,50 @@ namespace Nupi_Clinic.Data
             }
         }
 
+        public void checkPassword(string name, string password)
+        {
+            string sql = "SELECT COUNT(*) FROM Admin_Info WHERE Username = '@userName' && Password = '@password'";
+            SqlConnection? con = null;
+            try
+            {
+                con = connector.OpenConnection();
+                if (con.State == ConnectionState.Open)
+                {
+                    using (SqlCommand cmd = new SqlCommand(sql, con))
+                    {
+                        cmd.CommandType = CommandType.Text;
+                        cmd.Parameters.Add("@userName", SqlDbType.VarChar).Value = name;
+                        cmd.Parameters.Add("@password", SqlDbType.VarChar).Value = password;
+                        Int64 count = (Int64)cmd.ExecuteScalar();
+                        if (count > 0)
+                        {
+                            MainPage main = new MainPage();
+                            main.Show();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Incorrect UserName or Password");
+                        }
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Database connection is not open.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                // Close the connection in a finally block to ensure it gets closed
+                if (con != null && con.State == ConnectionState.Open)
+                {
+                    con.Close();
+                    //connector.CloseConnection(con);
+                }
+            }
+        }
     }
 }
