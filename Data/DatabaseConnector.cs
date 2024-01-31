@@ -32,13 +32,13 @@ namespace Nupi_Clinic.Data
             return connection;
         }
 
-        private void CloseConnection(SqlConnection connection)
-        {
-            if (connection.State == ConnectionState.Open)
-            {
-                connection.Close();
-            }
-        }
+        //public void CloseConnection(SqlConnection connection)
+        //{
+        //    if (connection.State == ConnectionState.Open)
+        //    {
+        //        connection.Close();
+        //    }
+        //}
 
         public DataTable ExecuteQuery(string query)
         {

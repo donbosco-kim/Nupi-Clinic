@@ -83,6 +83,7 @@ namespace Nupi_Clinic.Data
                 if (con != null && con.State == ConnectionState.Open)
                 {
                     con.Close();
+                    //connector.CloseConnection(con);
                 }
             }
         }
