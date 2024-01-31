@@ -90,7 +90,7 @@ namespace Nupi_Clinic.Data
             }
         }
 
-        public void checkPassword(string name, string password)
+        public void checkPassword(string username, string password)
         {
             string sql = "SELECT COUNT(*) FROM Admin_Info WHERE Username = '@userName' && Password = '@password'";
             SqlConnection? con = null;
@@ -102,7 +102,7 @@ namespace Nupi_Clinic.Data
                     using (SqlCommand cmd = new SqlCommand(sql, con))
                     {
                         cmd.CommandType = CommandType.Text;
-                        cmd.Parameters.Add("@userName", SqlDbType.VarChar).Value = name;
+                        cmd.Parameters.Add("@userName", SqlDbType.VarChar).Value = username;
                         cmd.Parameters.Add("@password", SqlDbType.VarChar).Value = password;
                         Int64 count = (Int64)cmd.ExecuteScalar();
                         if (count > 0)
@@ -133,6 +133,25 @@ namespace Nupi_Clinic.Data
                     con.Close();
                     //connector.CloseConnection(con);
                 }
+            }
+        }
+
+        public bool Login(string sql)
+        {
+            SqlConnection con = connector.OpenConnection();
+            SqlCommand cmd = new SqlCommand(sql, con);
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (reader.Read())
+            {
+                reader.Close();
+                con.Close();
+                return true;
+            }
+            else
+            {
+                reader.Close ();
+                con.Close();
+                return false;
             }
         }
     }
