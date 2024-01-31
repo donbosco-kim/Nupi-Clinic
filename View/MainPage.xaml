@@ -5,8 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Nupi_Clinic.View"
         mc:Ignorable="d"
-        Title="MainPage" Height="450" Width="800">
+        Title="MainPage" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <ResourceDictionary>
+            <Style x:Key="btns" TargetType="{x:Type Button}">
+                <Setter Property="Height" Value="60"/>
+                <Setter Property="FontSize" Value="20"/>
+            </Style>
+        </ResourceDictionary>
+    </Window.Resources>
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0.25*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Background="Beige">
+            <Button Style="{StaticResource btns}" Content="Home" Click="View_Appointment_Click"/>
+            <Button Style="{StaticResource btns}" Content="Add" Click="Add_Patient_Click"/>
+            <Button Style="{StaticResource btns}" Content="Schedule" Click="Schedule_Appointment_Click"/>
+            <Button x:Name="logout" Height="60" Background="Gray" Foreground="White" Margin="0,190,0,0" Click="Logout_Button_Click">Log Out</Button>
+        </StackPanel>
+        <ContentControl x:Name="CC" Grid.Column="1"/>
         
     </Grid>
 </Window>

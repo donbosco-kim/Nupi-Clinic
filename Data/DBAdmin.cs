@@ -84,7 +84,7 @@ namespace Nupi_Clinic.Data
 
         public bool Login(string username, string hashedPassword)
         {
-            string sql = "SELECT Username, Password FROM ClinicDB.Admins WHERE Username = @username AND Password = @password";
+            string sql = "SELECT Username, Password FROM ClinicDB.Admins WHERE Username = @userName AND Password = @password";
 
             try
             {
@@ -94,7 +94,7 @@ namespace Nupi_Clinic.Data
                     {
                         using (SqlCommand cmd = new SqlCommand(sql, con))
                         {
-                            cmd.Parameters.AddWithValue("@username", username);
+                            cmd.Parameters.AddWithValue("@userName", username);
                             cmd.Parameters.AddWithValue("@password", hashedPassword);
 
                             using (SqlDataReader reader = cmd.ExecuteReader())

@@ -23,5 +23,25 @@ namespace Nupi_Clinic.View
         {
             InitializeComponent();
         }
+
+        private void View_Appointment_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Add_Patient_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Schedule_Appointment_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Logout_Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
