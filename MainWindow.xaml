@@ -17,7 +17,7 @@
             <StackPanel Grid.Row="0">
                 <!--<Button x:Name="close" Click="Close_button_click" Width="20" Background="Red" Foreground="White" Margin="350,5,0,0">X</Button>-->
 
-                <TextBlock Text="NuPi Clinic" FontSize="25" Foreground="Orange" HorizontalAlignment="Center" Margin="0,40,0,0"></TextBlock>
+                <TextBlock Text="TitePhyu Clinic" FontSize="25" Foreground="Orange" HorizontalAlignment="Center" Margin="0,40,0,0"></TextBlock>
             </StackPanel>
 
         <StackPanel Grid.Row="1" HorizontalAlignment="Center">
