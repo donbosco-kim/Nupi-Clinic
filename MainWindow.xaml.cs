@@ -31,9 +31,10 @@ namespace Nupi_Clinic
 
             if (dBAdmin.Login(user_name.Text, hashedPassword))
             {
-                //direct to MainPage
+                //direct to MainPage view
                 MainPage main = new MainPage();
                 main.Show();
+                this.Close();
             }
             else
             {

@@ -20,6 +20,7 @@ namespace Nupi_Clinic.Data
     internal class DBAdmin
     {
         private DatabaseConnector connector;
+        private Admin_Info? currentAdmin;
 
         // Pass the connection string to the constructor of DBAdmin
         public DBAdmin()
@@ -60,9 +61,9 @@ namespace Nupi_Clinic.Data
                         using (SqlCommand cmd = new SqlCommand(query, con))
                         {
                             cmd.CommandType = CommandType.Text;
-                            cmd.Parameters.Add("@firstName", SqlDbType.VarChar).Value = admin.firstName;
-                            cmd.Parameters.Add("@lastName", SqlDbType.VarChar).Value = admin.lastName;
-                            cmd.Parameters.Add("@userName", SqlDbType.VarChar).Value = admin.userName;
+                            cmd.Parameters.Add("@firstName", SqlDbType.VarChar).Value = admin.FirstName;
+                            cmd.Parameters.Add("@lastName", SqlDbType.VarChar).Value = admin.LastName;
+                            cmd.Parameters.Add("@userName", SqlDbType.VarChar).Value = admin.UserName;
                             cmd.Parameters.Add("@Password", SqlDbType.VarChar).Value = hashedPassword;
 
                             cmd.ExecuteNonQuery();
@@ -84,7 +85,7 @@ namespace Nupi_Clinic.Data
 
         public bool Login(string username, string hashedPassword)
         {
-            string sql = "SELECT Username, Password FROM ClinicDB.Admins WHERE Username = @userName AND Password = @password";
+            string sql = "SELECT Username, Password FROM ClinicDB.Admins WHERE UserName = @userName AND Password = @password";
 
             try
             {
@@ -116,25 +117,32 @@ namespace Nupi_Clinic.Data
 
             return false; // Return false in case of an exception or other failure
         }
+        public bool ConfirmLogout()
+        {
+            MessageBoxResult result = MessageBox.Show("Are you sure you want to logout?", "Logout Confirmation", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            return result == MessageBoxResult.Yes;
+        }
 
+        public void Logout()
+        {
+            // Confirm the logout with the user
+            if (ConfirmLogout())
+            {
+                // Perform any necessary actions to clear authentication-related data or session information
+                // For example, clear the current admin's authentication-related data
+                //ClearAdminAuthenticationData();
 
-        //public bool Login(string sql)
-        //{
-        //    SqlConnection con = connector.OpenConnection();
-        //    SqlCommand cmd = new SqlCommand(sql, con);
-        //    SqlDataReader reader = cmd.ExecuteReader();
-        //    if (reader.Read())
-        //    {
-        //        reader.Close();
-        //        con.Close();
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        reader.Close ();
-        //        con.Close();
-        //        return false;
-        //    }
-        //}
+                // Display a message indicating successful logout
+                MessageBox.Show("Logout successful.");
+                // Redirect to a login screen or perform any other desired actions after logout
+                
+            }
+        }
+
+        private void ClearAdminAuthenticationData()
+        {
+            // Here, set the current admin to null or clear its properties
+            currentAdmin = null;
+        }
     }
 }

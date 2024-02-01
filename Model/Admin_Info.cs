@@ -8,16 +8,16 @@ namespace Nupi_Clinic.Model
 {
     internal class Admin_Info
     {
-        public string firstName {  get; set; }
-        public string lastName { get; set; }
-        public string userName { get; set; }
+        public string FirstName {  get; set; }
+        public string LastName { get; set; }
+        public string UserName { get; set; }
         public string Password { get; set; }
 
         public Admin_Info(string firstname, string lastname, string username, string password)
         {
-            firstName = firstname;
-            lastName = lastname;
-            userName = username;
+            FirstName = firstname;
+            LastName = lastname;
+            UserName = username;
             Password = password;
 
         }

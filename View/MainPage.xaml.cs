@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Nupi_Clinic.Data;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -41,7 +42,11 @@ namespace Nupi_Clinic.View
 
         private void Logout_Button_Click(object sender, RoutedEventArgs e)
         {
-
+            DBAdmin dBAdmin = new DBAdmin();
+            dBAdmin.Logout();
+            this.Close();
+            MainWindow main = new MainWindow();
+            main.Show();
         }
     }
 }
