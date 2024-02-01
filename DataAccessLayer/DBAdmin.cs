@@ -20,7 +20,7 @@ namespace Nupi_Clinic.Data
     internal class DBAdmin
     {
         private DatabaseConnector connector;
-        private Admin_Info? currentAdmin;
+        //private Admin_Info? currentAdmin;
 
         // Pass the connection string to the constructor of DBAdmin
         public DBAdmin()
@@ -141,10 +141,10 @@ namespace Nupi_Clinic.Data
             }
         }
 
-        private void ClearAdminAuthenticationData()
-        {
-            // Here, set the current admin to null or clear its properties
-            currentAdmin = null;
-        }
+        //private void ClearAdminAuthenticationData()
+        //{
+        //    // Here, set the current admin to null or clear its properties
+        //    currentAdmin = null;
+        //}
     }
 }
