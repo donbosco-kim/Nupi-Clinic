@@ -135,7 +135,9 @@ namespace Nupi_Clinic.Data
                 // Display a message indicating successful logout
                 MessageBox.Show("Logout successful.");
                 // Redirect to a login screen or perform any other desired actions after logout
-                
+                MainWindow main = new MainWindow();
+                main.Show();
+
             }
         }
 

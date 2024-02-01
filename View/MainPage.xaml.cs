@@ -45,8 +45,6 @@ namespace Nupi_Clinic.View
             DBAdmin dBAdmin = new DBAdmin();
             dBAdmin.Logout();
             this.Close();
-            MainWindow main = new MainWindow();
-            main.Show();
         }
     }
 }
