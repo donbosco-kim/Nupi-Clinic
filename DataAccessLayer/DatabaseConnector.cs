@@ -55,5 +55,37 @@ namespace Nupi_Clinic.Data
                 }
             }
         }
+
+        internal async Task<DataTable> ExecuteQueryAsync(string query)
+        {
+            try
+            {
+                using (SqlConnection connection = OpenConnection())
+                {
+                    using (SqlCommand command = new SqlCommand(query, connection))
+                    {
+                        using (SqlDataAdapter adapter = new SqlDataAdapter(command))
+                        {
+                            DataTable dataTable = new DataTable();
+                            await Task.Run(() => adapter.Fill(dataTable));
+
+                            return dataTable;
+                        }
+                    }
+                }
+            }
+            catch (SqlException ex)
+            {
+                // Use Dispatcher to show a MessageBox in a WPF application
+                Application.Current.Dispatcher.Invoke(() =>
+                {
+                    MessageBox.Show("Error: " + ex.Message);
+                });
+
+                throw; // Re-throw the exception after handling/logging
+            }
+        }
+
+
     }
 }
