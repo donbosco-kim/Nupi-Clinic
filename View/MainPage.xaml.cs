@@ -32,6 +32,7 @@ namespace Nupi_Clinic.View
             InitializeComponent();
             connector = new DatabaseConnector(connectionString);
             this.connectionString = connectionString;
+
         }
 
         private void View_Appointment_Click(object sender, RoutedEventArgs e)
@@ -41,20 +42,7 @@ namespace Nupi_Clinic.View
 
         private void Add_Patient_Click(object sender, RoutedEventArgs e)
         {
-            // Initialize PatientViewModel with the DatabaseConnector instance
-            PatientViewModel patientViewModel = new PatientViewModel(connectionString);
-            DateTime birthdate = DateTime.Parse(birthDate.Text);
-
-            if (firstName.Text == string.Empty || middleName.Text == string.Empty || lastName.Text == string.Empty || birthDate.Text == string.Empty || gender.Text == string.Empty || phoneNumber.Text == string.Empty || address.Text == string.Empty)
-            {
-                MessageBox.Show("Pls Fill UP All The Fields");
-            }
-
-            else
-            {
-                Patient add = new Patient(firstName.Text.Trim(), middleName.Text.Trim(), lastName.Text.Trim(), birthDate.Text.Trim(), gender.Text.Trim(), phoneNumber.Text.Trim(), address.Text.Trim());
-                patientViewModel.AddPatient(add);
-            }
+            
         }
 
         private void Schedule_Appointment_Click(object sender, RoutedEventArgs e)
