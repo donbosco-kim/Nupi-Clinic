@@ -20,13 +20,11 @@ namespace Nupi_Clinic.Data
     internal class DBAdmin
     {
         private readonly DatabaseConnector connector;
-        //private Admin_Info? currentAdmin;
 
         // Pass the connection string to the constructor of DBAdmin
-        public DBAdmin(string connectionString)
+        public DBAdmin()
         {
-            // Instantiate the DatabaseConnector with the provided connection string
-            connector = new DatabaseConnector(connectionString);
+            
         }
 
         public string ComputeSha256Hash(string rawData)

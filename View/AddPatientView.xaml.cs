@@ -24,19 +24,16 @@ namespace Nupi_Clinic.View
     /// </summary>
     public partial class AddPatientView : UserControl
     {
-        private readonly string connectionString;
-        private readonly DatabaseConnector connector;
-        public AddPatientView(string connectionString)
+        public AddPatientView()
         {
             InitializeComponent();
-            connector = new DatabaseConnector(connectionString);
-            this.connectionString = connectionString;
+           
         }
 
         private void Add_Patient_Click(object sender, RoutedEventArgs e)
         {
             // Initialize PatientViewModel with the DatabaseConnector instance
-            PatientViewModel patientViewModel = new PatientViewModel(connectionString);
+            PatientViewModel patientViewModel = new PatientViewModel();
             
 
             if (firstName.Text == string.Empty || middleName.Text == string.Empty || lastName.Text == string.Empty || birthDate.Text == string.Empty || genderComboBox.Text == string.Empty || phoneNumber.Text == string.Empty || address.Text == string.Empty)

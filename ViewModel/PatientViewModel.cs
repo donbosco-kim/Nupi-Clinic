@@ -18,22 +18,9 @@ namespace Nupi_Clinic.ViewModel
     {
         private readonly DatabaseConnector connector;
 
-        private ObservableCollection<Patient> _patients;
-
-        public ObservableCollection<Patient> Patients
+        public PatientViewModel()
         {
-            get { return _patients; }
-            set
-            {
-                _patients = value;
-                OnPropertyChanged(nameof(Patients));
-            }
-        }
-
-        public PatientViewModel(string connectionString)
-        {
-            connector = new DatabaseConnector(connectionString);
-            LoadPatients();
+            
         }
 
         private async void LoadPatients()
@@ -42,7 +29,7 @@ namespace Nupi_Clinic.ViewModel
             {
                 string query = "SELECT * FROM ClinicDB.Patients";
                 DataTable dataTable = await connector.ExecuteQueryAsync(query);
-                Patients = ConvertDataTableToObservableCollection(dataTable);
+                
             }
             catch (Exception ex)
             {
@@ -75,29 +62,6 @@ namespace Nupi_Clinic.ViewModel
             }
             con.Close();
 
-        }
-
-        private ObservableCollection<Patient> ConvertDataTableToObservableCollection(DataTable dataTable)
-        {
-            ObservableCollection<Patient> patients = new ObservableCollection<Patient>();
-
-            foreach (DataRow row in dataTable.Rows)
-            {
-                // Assuming your columns have the appropriate names; adjust as needed
-                string firstName = row["FirstName"].ToString();
-                string middleName = row["FirstName"].ToString();
-                string lastName = row["LastName"].ToString();
-                DateTime birthdate = Convert.ToDateTime(row["Birthdate"]);
-                string gender = row["Gender"].ToString();
-                string phoneNumber = row["PhoneNumber"].ToString();
-                string address = row["Address"].ToString();
-
-                // Create a new Patient object and add it to the ObservableCollection
-                Patient patient = new Patient(firstName, middleName, lastName, birthdate, gender, phoneNumber, address);
-                patients.Add(patient);
-            }
-
-            return patients;
         }
 
     }

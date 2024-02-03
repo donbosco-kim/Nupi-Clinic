@@ -25,14 +25,10 @@ namespace Nupi_Clinic.View
     /// </summary>
     public partial class MainPage : Window
     {
-        private readonly string connectionString;
-        private readonly DatabaseConnector connector;
-        public MainPage(string connectionString)
+        public MainPage()
         {
             InitializeComponent();
-            connector = new DatabaseConnector(connectionString);
-            this.connectionString = connectionString;
-
+            
         }
 
         private void View_Appointment_Click(object sender, RoutedEventArgs e)
@@ -42,7 +38,7 @@ namespace Nupi_Clinic.View
 
         private void Add_Patient_Click(object sender, RoutedEventArgs e)
         {
-            CC.Content = new AddPatientView(connectionString);
+            CC.Content = new AddPatientView();
         }
 
         private void Schedule_Appointment_Click(object sender, RoutedEventArgs e)
@@ -52,7 +48,7 @@ namespace Nupi_Clinic.View
 
         private void Logout_Button_Click(object sender, RoutedEventArgs e)
         {
-            DBAdmin dBAdmin = new DBAdmin(connectionString);
+            DBAdmin dBAdmin = new DBAdmin();
             dBAdmin.Logout();
             this.Close();
         }

@@ -11,6 +11,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Windows.Markup;
 
 namespace Nupi_Clinic
 {
@@ -19,24 +20,22 @@ namespace Nupi_Clinic
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly string connectionString;
-        private readonly DatabaseConnector connector;
-        public MainWindow(string connectionString)
+        public MainWindow()
         {
             InitializeComponent();
-            connector = new DatabaseConnector(connectionString);
-            this.connectionString = connectionString;
+                 
         }
+        
 
         private void Login_button_click(object sender, RoutedEventArgs e)
         {
-            DBAdmin dBAdmin = new DBAdmin(connectionString);
+            DBAdmin dBAdmin = new DBAdmin();
             string hashedPassword = dBAdmin.ComputeSha256Hash(password.Password);
 
             if (dBAdmin.Login(user_name.Text, hashedPassword))
             {
                 //direct to MainPage view
-                MainPage main = new MainPage(connectionString);
+                MainPage main = new MainPage();
                 main.Show();
                 this.Close();
             }
@@ -49,7 +48,7 @@ namespace Nupi_Clinic
 
         private void Register_button_click(object sender, RoutedEventArgs e)
         {
-            RegisterPage win = new RegisterPage(connectionString);
+            RegisterPage win = new RegisterPage();
             win.Show();
         }
 

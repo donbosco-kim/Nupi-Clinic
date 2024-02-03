@@ -9,12 +9,12 @@ namespace Nupi_Clinic.Data
 {
     internal class DatabaseConnector
     {
-        private readonly string connectionString = ConfigurationManager.ConnectionStrings["NupiDB"].ConnectionString;
+        private readonly string connectionString;
 
-        public DatabaseConnector(string connectionString)
+        public DatabaseConnector()
         {
             // Update the connection string to point to your SQL Server database
-            this.connectionString = connectionString; 
+            this.connectionString = ConfigurationManager.ConnectionStrings["NupiDB"].ConnectionString;
         }
 
         public SqlConnection OpenConnection()

@@ -21,13 +21,11 @@ namespace Nupi_Clinic.View
     /// </summary>
     public partial class RegisterPage : Window
     {
-        private readonly string connectionString;
-        private readonly DatabaseConnector connector;
-        public RegisterPage(string connectionString)
+        
+        public RegisterPage()
         {
             InitializeComponent();
-            connector = new DatabaseConnector(connectionString);
-            this.connectionString = connectionString;
+            
         }
 
         private void submit_button_click(object sender, RoutedEventArgs e)
@@ -44,7 +42,7 @@ namespace Nupi_Clinic.View
 
             else
             {
-                DBAdmin newAdmin = new DBAdmin(connectionString);
+                DBAdmin newAdmin = new DBAdmin();
                 Admin_Info? add = new(admin_first_name.Text.Trim(), admin_last_name.Text.Trim(), user_name.Text.Trim(), password.Password.Trim());
                 newAdmin.AddAdmin(add);
                 this.Close();
