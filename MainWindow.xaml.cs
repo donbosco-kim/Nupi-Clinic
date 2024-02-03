@@ -19,20 +19,24 @@ namespace Nupi_Clinic
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        private readonly string connectionString;
+        private readonly DatabaseConnector connector;
+        public MainWindow(string connectionString)
         {
             InitializeComponent();
+            connector = new DatabaseConnector(connectionString);
+            this.connectionString = connectionString;
         }
 
         private void Login_button_click(object sender, RoutedEventArgs e)
         {
-            DBAdmin dBAdmin = new DBAdmin();
+            DBAdmin dBAdmin = new DBAdmin(connectionString);
             string hashedPassword = dBAdmin.ComputeSha256Hash(password.Password);
 
             if (dBAdmin.Login(user_name.Text, hashedPassword))
             {
                 //direct to MainPage view
-                MainPage main = new MainPage();
+                MainPage main = new MainPage(connectionString);
                 main.Show();
                 this.Close();
             }
@@ -45,7 +49,7 @@ namespace Nupi_Clinic
 
         private void Register_button_click(object sender, RoutedEventArgs e)
         {
-            RegisterPage win = new RegisterPage();
+            RegisterPage win = new RegisterPage(connectionString);
             win.Show();
         }
 
