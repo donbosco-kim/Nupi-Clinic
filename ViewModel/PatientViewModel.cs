@@ -16,14 +16,14 @@ namespace Nupi_Clinic.ViewModel
 {
     internal class PatientViewModel : BaseViewModel
     {
-        //private readonly DatabaseConnector connector;
+        private readonly DatabaseConnector connector;
         //private Patient _patient;
 
-        //public PatientViewModel(string connectionString)
-        //{
-        //    _patient = new Patient();
-        //    connector = new DatabaseConnector(connectionString);
-        //}
+        public PatientViewModel()
+        {
+            //_patient = new Patient();
+            connector = new DatabaseConnector();
+        }
         //public string? FirstName
         //{
         //    get { return _patient.FirstName; }
@@ -121,40 +121,42 @@ namespace Nupi_Clinic.ViewModel
         //    {
         //        string query = "SELECT * FROM ClinicDB.Patients";
         //        DataTable dataTable = await connector.ExecuteQueryAsync(query);
-                
+
         //    }
         //    catch (Exception ex)
         //    {
         //        MessageBox.Show("An error occurred!\n" + ex.Message, "Error");
         //    }
         //}
-        //public void AddPatient(Patient patient)
-        //{
-            
-        //    string sql = "INSERT INTO ClinicDB.Patients VALUES(NULL, @firstName, @lastName, @birthDate, @gender, @phoneNumber)";
-        //    SqlConnection con = connector.OpenConnection();
-        //    SqlCommand cmd = new SqlCommand(sql, con);
-        //    cmd.CommandType = CommandType.Text;
-        //    cmd.Parameters.Add("@firstName", SqlDbType.VarChar).Value = patient.FirstName;
-        //    cmd.Parameters.Add("@lastName", SqlDbType.VarChar).Value = patient.LastName;
-        //    cmd.Parameters.Add("@birthDate", SqlDbType.DateTime).Value = patient.Birthdate;
-        //    cmd.Parameters.Add("@gender", SqlDbType.VarChar).Value = patient.Gender;
-        //    cmd.Parameters.Add("@phoneNumber", SqlDbType.VarChar).Value = patient.PhoneNumber;
-        //    try
-        //    {
-        //        cmd.ExecuteNonQuery();
-        //        MessageBox.Show("Added Successfully.");
+        public void AddPatient(Patient patient)
+        {
 
-        //    }
-        //    catch (SqlException ex)
-        //    {
+            string sql = "INSERT INTO ClinicDB.Patients VALUES(@firstName, @middleName ,@lastName, @birthDate, @gender, @phoneNumber, @address)";
+            SqlConnection con = connector.OpenConnection();
+            SqlCommand cmd = new SqlCommand(sql, con);
+            cmd.CommandType = CommandType.Text;
+            cmd.Parameters.Add("@firstName", SqlDbType.VarChar).Value = patient.FirstName;
+            cmd.Parameters.Add("@middleName", SqlDbType.VarChar).Value = patient.MiddleName;
+            cmd.Parameters.Add("@lastName", SqlDbType.VarChar).Value = patient.LastName;
+            cmd.Parameters.Add("@birthDate", SqlDbType.DateTime).Value = patient.Birthdate;
+            cmd.Parameters.Add("@gender", SqlDbType.VarChar).Value = patient.Gender;
+            cmd.Parameters.Add("@phoneNumber", SqlDbType.VarChar).Value = patient.PhoneNumber;
+            cmd.Parameters.Add("@address", SqlDbType.VarChar).Value = patient.Address;
+            try
+            {
+                cmd.ExecuteNonQuery();
+                MessageBox.Show("Added Successfully.");
 
-        //        MessageBox.Show("Patient not added sucessfully \n" + ex.Message);
+            }
+            catch (SqlException ex)
+            {
 
-        //    }
-        //    con.Close();
+                MessageBox.Show("Patient not added sucessfully \n" + ex.Message);
 
-        //}
+            }
+            con.Close();
+
+        }
 
     }
 }
