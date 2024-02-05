@@ -20,7 +20,7 @@
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <StackPanel Background="Beige">
-            <Button Style="{StaticResource btns}" Content="Home" Click="View_Appointment_Click"/>
+            <Button Style="{StaticResource btns}" Content="Home" Click="View_Patient_Click"/>
             <Button Style="{StaticResource btns}" Content="Add" Click="Add_Patient_Click"/>
             <Button Style="{StaticResource btns}" Content="Schedule" Click="Schedule_Appointment_Click"/>
             <Button x:Name="logout" Height="60" Background="Gray" Foreground="White" Margin="0,190,0,0" Click="Logout_Button_Click">Log Out</Button>

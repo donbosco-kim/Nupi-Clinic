@@ -34,9 +34,9 @@ namespace Nupi_Clinic.View
 
         }
 
-        private void View_Appointment_Click(object sender, RoutedEventArgs e)
+        private void View_Patient_Click(object sender, RoutedEventArgs e)
         {
-
+            CC.Content = new PatientView();
         }
 
         private void Add_Patient_Click(object sender, RoutedEventArgs e)
