@@ -21,18 +21,19 @@ namespace Nupi_Clinic.View
     /// </summary>
     public partial class RegisterPage : Window
     {
-        
+        private readonly DatabaseConnector connector;
+
         public RegisterPage()
         {
             InitializeComponent();
-            
+            connector = new DatabaseConnector();
         }
 
         private void submit_button_click(object sender, RoutedEventArgs e)
         {
+            DBAdmin newAdmin = new DBAdmin();
             if (password.Password != confirmpassword.Password)
             {
-
                 MessageBox.Show("Password doesn't match");
             }
             else if (admin_first_name.Text == string.Empty || admin_last_name.Text == string.Empty || user_name.Text == string.Empty || password.Password == string.Empty || password.Password == string.Empty)
@@ -42,7 +43,7 @@ namespace Nupi_Clinic.View
 
             else
             {
-                DBAdmin newAdmin = new DBAdmin();
+                
                 Admin_Info? add = new(admin_first_name.Text.Trim(), admin_last_name.Text.Trim(), user_name.Text.Trim(), password.Password.Trim());
                 newAdmin.AddAdmin(add);
                 this.Close();

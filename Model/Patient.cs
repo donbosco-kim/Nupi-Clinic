@@ -15,15 +15,15 @@ namespace Nupi_Clinic.Model
         public string? Gender { get; set; }
         public string? PhoneNumber { get; set; }
         public string? Address { get; set; }
-        //public Patient (string firstName, string middleName, string lastName, DateTime birthdate, string gender, string phoneNumber, string address)
-        //{
-        //    FirstName = firstName;
-        //    MiddleName = middleName;
-        //    LastName = lastName;
-        //    Birthdate = birthdate;
-        //    Gender = gender;
-        //    PhoneNumber = phoneNumber;
-        //    Address = address;
-        //}
+        public Patient (string firstName, string middleName, string lastName, DateTime birthdate, string gender, string phoneNumber, string address)
+        {
+            FirstName = firstName;
+            MiddleName = middleName;
+            LastName = lastName;
+            Birthdate = birthdate;
+            Gender = gender;
+            PhoneNumber = phoneNumber;
+            Address = address;
+        }
     }
 }

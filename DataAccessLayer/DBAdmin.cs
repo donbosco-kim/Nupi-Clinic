@@ -22,9 +22,9 @@ namespace Nupi_Clinic.Data
         private readonly DatabaseConnector connector;
 
         // Pass the connection string to the constructor of DBAdmin
-        public DBAdmin(string connectionString)
+        public DBAdmin()
         {
-            connector = new DatabaseConnector(connectionString);
+            connector = new DatabaseConnector();
         }
         public string ComputeSha256Hash(string rawData)
         {

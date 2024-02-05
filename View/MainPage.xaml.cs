@@ -25,10 +25,13 @@ namespace Nupi_Clinic.View
     /// </summary>
     public partial class MainPage : Window
     {
+        private readonly DatabaseConnector connector;
         public MainPage()
         {
-            InitializeComponent();
             
+            InitializeComponent();
+            connector = new DatabaseConnector();
+
         }
 
         private void View_Appointment_Click(object sender, RoutedEventArgs e)
