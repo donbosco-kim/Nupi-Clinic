@@ -38,5 +38,15 @@ namespace Nupi_Clinic.View
             // Set the ItemsSource to the list of patients from the repository
             myDataGrid.ItemsSource = _patientRepository.GetAllPatients().ToList();
         }
+
+        private void UpdateButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
