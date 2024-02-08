@@ -1,4 +1,5 @@
 ﻿using Nupi_Clinic.Model;
+using Nupi_Clinic.Repositories;
 using Nupi_Clinic.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -23,18 +24,19 @@ namespace Nupi_Clinic.View
     /// </summary>
     public partial class PatientView : UserControl
     {
-        private readonly PatientViewModel _patientViewModel;
+        private readonly PatientRepository _patientRepository;
         public PatientView()
         {
             InitializeComponent();
-            _patientViewModel = new PatientViewModel();
-            DataContext = _patientViewModel;  // Set the DataContext to the ViewModel
+            _patientRepository = new PatientRepository();
+
+            // Load patients into the DataGrid when the window is initialized
+            RefreshDataGrid();
         }
-        public void Display()
+        private void RefreshDataGrid()
         {
-            _patientViewModel.LoadPatients();
-            // Assuming that you have a property in the ViewModel to hold the list of patients
-            listView.ItemsSource = _patientViewModel.Patients;
+            // Set the ItemsSource to the list of patients from the repository
+            myDataGrid.ItemsSource = _patientRepository.GetAllPatients().ToList();
         }
     }
 }
