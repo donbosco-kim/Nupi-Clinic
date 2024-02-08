@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using Nupi_Clinic.Data;
 using Nupi_Clinic.Model;
+using Nupi_Clinic.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
