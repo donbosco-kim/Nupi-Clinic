@@ -33,7 +33,7 @@ namespace Nupi_Clinic.View
             // Load patients into the DataGrid when the window is initialized
             RefreshDataGrid();
         }
-        private void RefreshDataGrid()
+        public void RefreshDataGrid()
         {
             // Set the ItemsSource to the list of patients from the repository
             myDataGrid.ItemsSource = _patientRepository.GetAllPatients().ToList();
