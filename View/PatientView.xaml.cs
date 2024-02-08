@@ -1,5 +1,8 @@
-﻿using System;
+﻿using Nupi_Clinic.Model;
+using Nupi_Clinic.ViewModel;
+using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,9 +23,18 @@ namespace Nupi_Clinic.View
     /// </summary>
     public partial class PatientView : UserControl
     {
+        private readonly PatientViewModel _patientViewModel;
         public PatientView()
         {
             InitializeComponent();
+            _patientViewModel = new PatientViewModel();
+            DataContext = _patientViewModel;  // Set the DataContext to the ViewModel
+        }
+        public void Display()
+        {
+            _patientViewModel.LoadPatients();
+            // Assuming that you have a property in the ViewModel to hold the list of patients
+            listView.ItemsSource = _patientViewModel.Patients;
         }
     }
 }

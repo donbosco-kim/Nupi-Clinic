@@ -26,17 +26,20 @@ namespace Nupi_Clinic.View
     public partial class MainPage : Window
     {
         private readonly DatabaseConnector connector;
+        private readonly PatientView patientView;
         public MainPage()
         {
             
             InitializeComponent();
             connector = new DatabaseConnector();
+            patientView = new PatientView();
 
         }
 
         private void View_Patient_Click(object sender, RoutedEventArgs e)
         {
             CC.Content = new PatientView();
+            patientView.Display();
         }
 
         private void Add_Patient_Click(object sender, RoutedEventArgs e)

@@ -7,6 +7,32 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
+        <ListView Grid.Row="1" x:Name="listView"  ItemsSource="{Binding Patients}">
+            <ListView.View>
+                <GridView>
+                    <GridView.Columns>
+                        <GridViewColumn Header="ID" Width="30" DisplayMemberBinding="{Binding}"/>
+                        <GridViewColumn Header="First Name" Width="100" DisplayMemberBinding="{Binding FirstName}"/>
+                        <GridViewColumn Header="Middle Name" Width="100" DisplayMemberBinding="{Binding MiddleName}"/>
+                        <GridViewColumn Header="Last Name" Width="100" DisplayMemberBinding="{Binding LastName}"/>
+                        <GridViewColumn Header="Birth Date" Width="100" DisplayMemberBinding="{Binding Birthdate}"/>
+                        <GridViewColumn Header="Gender" Width="50" DisplayMemberBinding="{Binding Gender}"/>
+                        <GridViewColumn Header="Phone Number" Width="100" DisplayMemberBinding="{Binding PhoneNumber}"/>
+                        <GridViewColumn Header="Address" Width="100" DisplayMemberBinding="{Binding Address}"/>
+                        <GridViewColumn Header="Action" Width="120">
+                            <GridViewColumn.CellTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal" Margin="4">
+                                        <Button Content="Update" Width="40" Height="25"/>
+                                        <Button Content="Delete" Width="40" Height="25"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </GridViewColumn.CellTemplate>
+                        </GridViewColumn>
+                    </GridView.Columns>
+                </GridView>
+            </ListView.View>
+        </ListView>
             
     </Grid>
 </UserControl>
