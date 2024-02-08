@@ -115,8 +115,5 @@ namespace Nupi_Clinic.ViewModel
                 }
             }
         }
-
-
-
     }
 }

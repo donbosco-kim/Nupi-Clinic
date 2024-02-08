@@ -1,5 +1,6 @@
 ﻿using Nupi_Clinic.Data;
 using Nupi_Clinic.Model;
+using Nupi_Clinic.Repositories;
 using Nupi_Clinic.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -25,23 +26,28 @@ namespace Nupi_Clinic.View
     /// </summary>
     public partial class MainPage : Window
     {
-        
+        //private readonly PatientRepository _patientRepository;
         public MainPage()
         {
             
             InitializeComponent();
-            
+            //set starting page for loading patient data in Home
+            CC.Content = new PatientView();
 
         }
+        
 
         private void View_Patient_Click(object sender, RoutedEventArgs e)
         {
             CC.Content = new PatientView();
-            
+
         }
 
         private void Add_Patient_Click(object sender, RoutedEventArgs e)
         {
+            // Hide the DataGrid in MainPage
+            //myDataGrid.Visibility = Visibility.Collapsed;
+
             CC.Content = new AddPatientView();
         }
 
@@ -55,6 +61,16 @@ namespace Nupi_Clinic.View
             DBAdmin dBAdmin = new DBAdmin();
             dBAdmin.Logout();
             this.Close();
+        }
+
+        private void UpdateButton_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DeleteButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
