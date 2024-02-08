@@ -1,4 +1,5 @@
-﻿using Nupi_Clinic.Model;
+﻿using Nupi_Clinic.DataAccessLayer;
+using Nupi_Clinic.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +10,11 @@ namespace Nupi_Clinic.Repositories
 {
     public class PatientRepository
     {
-        private readonly DataContext _context;
+        private readonly PatientDbContext _context;
 
         public PatientRepository()
         {
-            _context = new DataContext();
+            _context = new PatientDbContext();
             _context.Database.EnsureCreated(); // Ensure the database is created
         }
 
