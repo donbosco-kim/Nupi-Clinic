@@ -37,30 +37,43 @@ namespace Nupi_Clinic.View
 
         private void Add_Patient_Click(object sender, RoutedEventArgs e)
         {
-            if (firstName.Text == string.Empty || middleName.Text == string.Empty || lastName.Text == string.Empty || birthDate.Text == string.Empty || genderComboBox.Text == string.Empty || phoneNumber.Text == string.Empty || address.Text == string.Empty)
+            if (string.IsNullOrWhiteSpace(firstName.Text) || string.IsNullOrWhiteSpace(middleName.Text) || string.IsNullOrWhiteSpace(lastName.Text) ||
+                string.IsNullOrWhiteSpace(birthDate.Text) || string.IsNullOrWhiteSpace(genderComboBox.Text) || string.IsNullOrWhiteSpace(phoneNumber.Text) ||
+                string.IsNullOrWhiteSpace(address.Text))
             {
-                MessageBox.Show("Pls Fill UP All The Fields");
+                MessageBox.Show("Please fill up all the fields.");
             }
             else
             {
-                // Create a new patient instance (replace the values with actual data)
-                Patients newPatient = new Patients
+                // Validate and parse the Birthdate
+                if (DateTime.TryParse(birthDate.Text, out DateTime birthdate))
                 {
-                    FirstName = firstName.Text,
-                    MiddleName = middleName.Text,
-                    LastName = lastName.Text,
-                    Birthdate = DateTime.Parse(birthDate.Text),
-                    Gender = genderComboBox.Text,
-                    PhoneNumber = phoneNumber.Text,
-                    Address = address.Text, 
-                };
+                    // Create a new patient instance 
+                    Patients newPatient = new Patients
+                    {
+                        FirstName = firstName.Text,
+                        MiddleName = middleName.Text,
+                        LastName = lastName.Text,
+                        Birthdate = birthdate,
+                        Gender = genderComboBox.Text,
+                        PhoneNumber = phoneNumber.Text,
+                        Address = address.Text,
+                    };
 
-                _patientRepository.AddPatient(newPatient);
+                    // Add the new patient to the repository
+                    _patientRepository.AddPatient(newPatient);
 
-                // Refresh DataGrid after adding a patient
-                _patientView.RefreshDataGrid();
+                    MessageBox.Show("Patient added successfully!");
 
+                    // Refresh DataGrid after adding a patient
+                    _patientView.RefreshDataGrid();
+                }
+                else
+                {
+                    MessageBox.Show("Invalid birthdate format. Please enter a valid date.");
+                }
             }
         }
+
     }
 }
