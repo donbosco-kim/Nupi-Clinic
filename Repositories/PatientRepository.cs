@@ -17,15 +17,14 @@ namespace Nupi_Clinic.Repositories
             _context = new PatientDbContext();
             _context.Database.EnsureCreated(); // Ensure the database is created
         }
-
-        public IEnumerable<Patients> GetAllPatients()
-        {
-            return _context.Patients.ToList();
-        }
         public void AddPatient(Patients patient)
         {
             _context.Patients.Add(patient);
             _context.SaveChanges();
+        }
+        public IEnumerable<Patients> GetAllPatients()
+        {
+            return _context.Patients.ToList();
         }
 
         public Patients? GetPatient(int patientId)
@@ -38,15 +37,21 @@ namespace Nupi_Clinic.Repositories
             _context.Patients.Update(patient);
             _context.SaveChanges();
         }
-
-        public void DeletePatient(int patientId)
+        public void DeletePatient(Patients selectedPatient)
         {
-            var patient = _context.Patients.Find(patientId);
-            if (patient != null)
-            {
-                _context.Patients.Remove(patient);
-                _context.SaveChanges();
-            }
+
+            _context.Patients.Remove(selectedPatient);
+            _context.SaveChanges();
         }
+
+        //public void DeletePatient(int patientId)
+        //{
+        //    var patient = _context.Patients.Find(patientId);
+        //    if (patient != null)
+        //    {
+        //        _context.Patients.Remove(patient);
+        //        _context.SaveChanges();
+        //    }
+        //}
     }
 }

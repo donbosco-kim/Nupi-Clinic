@@ -1,4 +1,5 @@
 ﻿using MySql.Data.MySqlClient;
+using Nupi_Clinic.Command;
 using Nupi_Clinic.Data;
 using Nupi_Clinic.Model;
 using Nupi_Clinic.Repositories;
@@ -19,11 +20,26 @@ namespace Nupi_Clinic.ViewModel
     {
         private readonly PatientRepository _repository;
         private Patients _patient;
+        private Patients selectedPatient;
 
+        public RelayCommand AddNewPatient => new RelayCommand(execute => AddPatient());
+        public RelayCommand ViewAllPatientCommand => new RelayCommand(execute => AllPatients());
+        public RelayCommand UpdatePatientCommand => new RelayCommand(execute => UpdatePatient());
+        public RelayCommand DeleteCommand => new RelayCommand(execute => DeletePatient(selectedPatient), canExecute => SelectedPatient != null);
         public PatientViewModel()
         {
             _repository = new PatientRepository();
             _patient = new Patients();
+        }
+
+        public Patients SelectedPatient
+        {
+            get { return selectedPatient; }
+            set
+            {
+                selectedPatient = value;
+                OnPropertyChanged(nameof(SelectedPatient));
+            }
         }
         public string? FirstName
         {
@@ -114,6 +130,31 @@ namespace Nupi_Clinic.ViewModel
                     OnPropertyChanged(nameof(Address));
                 }
             }
+        }
+
+        // CRUD operations
+        private void AddPatient()
+        {
+            _repository.AddPatient(_patient);
+        }
+        private IEnumerable<Patients> AllPatients()
+        {
+            return _repository.GetAllPatients();
+        }
+
+        private Patients? GetPatient(int patientId)
+        {
+            return _repository.GetPatient(patientId);
+        }
+
+        private void UpdatePatient()
+        {
+            _repository.UpdatePatient(_patient);
+        }
+
+        private void DeletePatient(Patients selectedPatient)
+        {
+            _repository.DeletePatient(selectedPatient);
         }
     }
 }
