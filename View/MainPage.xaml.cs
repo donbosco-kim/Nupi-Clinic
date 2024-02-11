@@ -45,9 +45,6 @@ namespace Nupi_Clinic.View
 
         private void Add_Patient_Click(object sender, RoutedEventArgs e)
         {
-            // Hide the DataGrid in MainPage
-            //myDataGrid.Visibility = Visibility.Collapsed;
-
             CC.Content = new AddPatientView();
         }
 
@@ -61,16 +58,6 @@ namespace Nupi_Clinic.View
             DBAdmin dBAdmin = new DBAdmin();
             dBAdmin.Logout();
             this.Close();
-        }
-
-        private void UpdateButton_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void DeleteButton_Click(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }
