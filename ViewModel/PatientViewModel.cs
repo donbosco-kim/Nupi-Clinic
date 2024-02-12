@@ -1,47 +1,43 @@
 ﻿using MySql.Data.MySqlClient;
 using Nupi_Clinic.Command;
 using Nupi_Clinic.Data;
+using Nupi_Clinic.DataAccessLayer;
 using Nupi_Clinic.Model;
 using Nupi_Clinic.Repositories;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Data;
-using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Globalization;
 using System.Windows;
+
 
 namespace Nupi_Clinic.ViewModel
 {
-    internal class PatientViewModel : BaseViewModel
+    public class PatientViewModel : BaseViewModel
     {
         private readonly PatientRepository _repository;
         private Patients _patient;
-        private Patients selectedPatient;
-
-        public RelayCommand AddNewPatient => new RelayCommand(execute => AddPatient());
-        public RelayCommand ViewAllPatientCommand => new RelayCommand(execute => AllPatients());
+        public RelayCommand AddPatientCommand => new RelayCommand(execute => AddPatient());
+        //public RelayCommand ViewAllPatientCommand => new RelayCommand(execute => AllPatients());
         public RelayCommand UpdatePatientCommand => new RelayCommand(execute => UpdatePatient());
-        public RelayCommand DeleteCommand => new RelayCommand(execute => DeletePatient(selectedPatient), canExecute => SelectedPatient != null);
+        //public RelayCommand DeleteCommand => new RelayCommand(execute => DeletePatient(selectedPatient), canExecute => SelectedPatient != null);
         public PatientViewModel()
         {
             _repository = new PatientRepository();
             _patient = new Patients();
+            PatientBirthdate = DateTime.Now;
         }
-
+        
         public Patients SelectedPatient
         {
-            get { return selectedPatient; }
+            get { return _patient; }
             set
             {
-                selectedPatient = value;
+                _patient = value;
                 OnPropertyChanged(nameof(SelectedPatient));
             }
         }
-        public string? FirstName
+
+        //Properties to bind with TextBoxes
+        public string? PatientFirstName
         {
             get { return _patient.FirstName; }
             set
@@ -49,12 +45,12 @@ namespace Nupi_Clinic.ViewModel
                 if (_patient.FirstName != value)
                 {
                     _patient.FirstName = value;
-                    OnPropertyChanged(nameof(FirstName));
+                    OnPropertyChanged(nameof(PatientFirstName));
                 }
             }
         }
 
-        public string? MiddleName
+        public string? PatientMiddleName
         {
             get { return _patient.MiddleName; }
             set
@@ -62,12 +58,12 @@ namespace Nupi_Clinic.ViewModel
                 if (_patient.MiddleName != value)
                 {
                     _patient.MiddleName = value;
-                    OnPropertyChanged(nameof(MiddleName));
+                    OnPropertyChanged(nameof(PatientMiddleName));
                 }
             }
         }
 
-        public string? LastName
+        public string? PatientLastName
         {
             get { return _patient.LastName; }
             set
@@ -75,25 +71,25 @@ namespace Nupi_Clinic.ViewModel
                 if (_patient.LastName != value)
                 {
                     _patient.LastName = value;
-                    OnPropertyChanged(nameof(LastName));
+                    OnPropertyChanged(nameof(PatientLastName));
                 }
             }
         }
 
-        public DateTime Birthdate
+        public DateTime? PatientBirthdate
         {
             get { return _patient.Birthdate; }
             set
             {
                 if (_patient.Birthdate != value)
                 {
-                    _patient.Birthdate = value;
-                    OnPropertyChanged(nameof(Birthdate));
+                    _patient.Birthdate = (DateTime)value!;
+                    OnPropertyChanged(nameof(PatientBirthdate));
                 }
             }
         }
 
-        public string? Gender
+        public string? PatientGender
         {
             get { return _patient.Gender; }
             set
@@ -101,12 +97,12 @@ namespace Nupi_Clinic.ViewModel
                 if (_patient.Gender != value)
                 {
                     _patient.Gender = value;
-                    OnPropertyChanged(nameof(Gender));
+                    OnPropertyChanged(nameof(PatientGender));
                 }
             }
         }
 
-        public string? PhoneNumber
+        public string? PatientPhoneNumber
         {
             get { return _patient.PhoneNumber; }
             set
@@ -114,12 +110,12 @@ namespace Nupi_Clinic.ViewModel
                 if (_patient.PhoneNumber != value)
                 {
                     _patient.PhoneNumber = value;
-                    OnPropertyChanged(nameof(PhoneNumber));
+                    OnPropertyChanged(nameof(PatientPhoneNumber));
                 }
             }
         }
 
-        public string? Address
+        public string? PatientAddress
         {
             get { return _patient.Address; }
             set
@@ -127,7 +123,7 @@ namespace Nupi_Clinic.ViewModel
                 if (_patient.Address != value)
                 {
                     _patient.Address = value;
-                    OnPropertyChanged(nameof(Address));
+                    OnPropertyChanged(nameof(PatientAddress));
                 }
             }
         }
@@ -135,9 +131,39 @@ namespace Nupi_Clinic.ViewModel
         // CRUD operations
         private void AddPatient()
         {
-            _repository.AddPatient(_patient);
+            if (string.IsNullOrWhiteSpace(PatientFirstName) || string.IsNullOrWhiteSpace(PatientMiddleName) || string.IsNullOrWhiteSpace(PatientLastName) ||
+                string.IsNullOrWhiteSpace(PatientGender) || string.IsNullOrWhiteSpace(PatientPhoneNumber) || string.IsNullOrWhiteSpace(PatientAddress))
+            {
+                MessageBox.Show("Please fill up all the fields.");
+                return;
+            }
+
+            // Validate and parse the Birthdate
+            if (PatientBirthdate.HasValue)
+            {
+                Patients newPatient = new Patients
+                {
+                    FirstName = PatientFirstName,
+                    MiddleName = PatientMiddleName,
+                    LastName = PatientLastName,
+                    Birthdate = PatientBirthdate.Value,
+                    Gender = PatientGender,
+                    PhoneNumber = PatientPhoneNumber,
+                    Address = PatientAddress,
+                };
+
+                _repository.AddPatient(newPatient);
+                MessageBox.Show("Patient added successfully!");
+            }
+            else
+            {
+                MessageBox.Show("Invalid birthdate format. Please enter a valid date.");
+            }
         }
-        private IEnumerable<Patients> AllPatients()
+
+
+
+        public IEnumerable<Patients> GetAllPatients()
         {
             return _repository.GetAllPatients();
         }
@@ -149,7 +175,7 @@ namespace Nupi_Clinic.ViewModel
 
         private void UpdatePatient()
         {
-            _repository.UpdatePatient(_patient);
+            _repository.UpdatePatient(SelectedPatient);
         }
 
         private void DeletePatient(Patients selectedPatient)

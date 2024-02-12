@@ -22,32 +22,19 @@
             <TextBlock  Height="30" Margin="0,0,0,5">Address:</TextBlock>
         </StackPanel>
         <StackPanel HorizontalAlignment="Right" Margin="0,50,40,0" Grid.RowSpan="2">
-            <TextBox Name="firstName" Height="30" Width="150" Margin="0,0,0,5"></TextBox>
-            <TextBox Name="middleName" Height="30" Width="150" Margin="0,0,0,5"></TextBox>
-            <TextBox Name="lastName" Height="30" Width="150" Margin="0,0,0,5"></TextBox>
-            <DatePicker Name="birthDate" Height="30" Width="100" Margin="0,0,50,5" DisplayDateStart="1900-01-01">
-                <DatePicker.Resources>
-                    <Style TargetType="DatePickerTextBox">
-                        <Setter Property="Control.Template">
-                            <Setter.Value>
-                                <ControlTemplate>
-                                    <TextBox Text="{Binding Path=SelectedDate, RelativeSource={RelativeSource AncestorType={x:Type DatePicker}}, StringFormat='yyyy/MM/dd'}"/>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                    </Style>
-                </DatePicker.Resources>
-            </DatePicker>
-            <ComboBox Name="genderComboBox" Height="30" Width="80" Margin="0,0,70,5">
+            <TextBox Text="{Binding PatientFirstName}" Height="30" Width="150" Margin="0,0,0,5"></TextBox>
+            <TextBox Text="{Binding PatientMiddleName}" Height="30" Width="150" Margin="0,0,0,5"></TextBox>
+            <TextBox Text="{Binding PatientLastName}" Height="30" Width="150" Margin="0,0,0,5"></TextBox>
+            <DatePicker SelectedDate="{Binding PatientBirthdate}" Height="30" Width="100" Margin="0,0,50,5"/>
+            <ComboBox Text="{Binding PatientGender}" Height="30" Width="80" Margin="0,0,70,5">
                 <ComboBoxItem Content="Male"/>
                 <ComboBoxItem Content="Female"/>
             </ComboBox>
-            <TextBox Name="phoneNumber" Height="30" Width="150" Margin="0,0,0,5"></TextBox>
-            <TextBox Name="address" Height="30" Width="150" Margin="0,0,0,5"></TextBox>
+            <TextBox Text="{Binding PatientPhoneNumber}" Height="30" Width="150" Margin="0,0,0,5"></TextBox>
+            <TextBox Text="{Binding PatientAddress}" Height="30" Width="150" Margin="0,0,0,5"></TextBox>
         </StackPanel>
         <StackPanel Grid.Row="1">
-            <Button Width="60" Height="30" Margin="150,120,0,0" Click="Add_Patient_Click">Add</Button>
-            
+            <Button Content="Add" Command="{Binding AddPatientCommand}" Width="60" Height="30" Margin="150,120,0,0" />
         </StackPanel>
 
     </Grid>

@@ -25,55 +25,14 @@ namespace Nupi_Clinic.View
     /// </summary>
     public partial class AddPatientView : UserControl
     {
-        private readonly PatientRepository _patientRepository;
-        private readonly PatientView _patientView;
-        public AddPatientView()
+        private readonly PatientViewModel _patientViewModel;
+        public AddPatientView(PatientViewModel patientViewModel)
         {
             InitializeComponent();
-            _patientRepository = new PatientRepository();
-            _patientView = new PatientView();
-
+            // Assign the provided PatientViewModel to the local variable
+            _patientViewModel = patientViewModel;
+            // Set the DataContext of the view to the PatientViewModel
+            DataContext = _patientViewModel;
         }
-
-        private void Add_Patient_Click(object sender, RoutedEventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(firstName.Text) || string.IsNullOrWhiteSpace(middleName.Text) || string.IsNullOrWhiteSpace(lastName.Text) ||
-                string.IsNullOrWhiteSpace(birthDate.Text) || string.IsNullOrWhiteSpace(genderComboBox.Text) || string.IsNullOrWhiteSpace(phoneNumber.Text) ||
-                string.IsNullOrWhiteSpace(address.Text))
-            {
-                MessageBox.Show("Please fill up all the fields.");
-            }
-            else
-            {
-                // Validate and parse the Birthdate
-                if (DateTime.TryParse(birthDate.Text, out DateTime birthdate))
-                {
-                    // Create a new patient instance 
-                    Patients newPatient = new Patients
-                    {
-                        FirstName = firstName.Text,
-                        MiddleName = middleName.Text,
-                        LastName = lastName.Text,
-                        Birthdate = birthdate,
-                        Gender = genderComboBox.Text,
-                        PhoneNumber = phoneNumber.Text,
-                        Address = address.Text,
-                    };
-
-                    // Add the new patient to the repository
-                    _patientRepository.AddPatient(newPatient);
-
-                    MessageBox.Show("Patient added successfully!");
-
-                    // Refresh DataGrid after adding a patient
-                    _patientView.RefreshDataGrid();
-                }
-                else
-                {
-                    MessageBox.Show("Invalid birthdate format. Please enter a valid date.");
-                }
-            }
-        }
-
     }
 }

@@ -45,8 +45,16 @@ namespace Nupi_Clinic.View
 
         private void Add_Patient_Click(object sender, RoutedEventArgs e)
         {
-            CC.Content = new AddPatientView();
+            // Assuming you have a PatientViewModel instance created elsewhere
+            PatientViewModel patientViewModel = new PatientViewModel();
+
+            // Create an instance of AddPatientView and pass the PatientViewModel to its constructor
+            AddPatientView addPatientView = new AddPatientView(patientViewModel);
+
+            // Set the Content property to the already created addPatientView
+            CC.Content = addPatientView;
         }
+
 
         private void Schedule_Appointment_Click(object sender, RoutedEventArgs e)
         {
