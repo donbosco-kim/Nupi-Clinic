@@ -28,18 +28,6 @@
                 <DataGridTextColumn Header="Gender" Binding="{Binding Gender}" Width="60" />
                 <DataGridTextColumn Header="Phone Number" Binding="{Binding PhoneNumber}" Width="100" />
                 <DataGridTextColumn Header="Address" Binding="{Binding Address}" Width="170" />
-                
-                <!-- New GridViewColumn for Buttons -->
-                <DataGridTemplateColumn Header="Action" Width="130">
-                    <DataGridTemplateColumn.CellTemplate>
-                        <DataTemplate>
-                            <StackPanel Orientation="Horizontal" Margin="4">
-                                <Button Content="Update" Width="60" Height="25" Click="UpdateButton_Click"/>
-                                <Button Content="Delete" Width="60" Height="25" Click="DeleteButton_Click"/>
-                            </StackPanel>
-                        </DataTemplate>
-                    </DataGridTemplateColumn.CellTemplate>
-                </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
             
