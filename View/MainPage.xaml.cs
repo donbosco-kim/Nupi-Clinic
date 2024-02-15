@@ -29,13 +29,13 @@ namespace Nupi_Clinic.View
         //private readonly PatientRepository _patientRepository;
         public MainPage()
         {
-            
+
             InitializeComponent();
             //set starting page for loading patient data in Home
             CC.Content = new PatientView();
 
         }
-        
+
 
         private void View_Patient_Click(object sender, RoutedEventArgs e)
         {
@@ -45,14 +45,8 @@ namespace Nupi_Clinic.View
 
         private void Add_Patient_Click(object sender, RoutedEventArgs e)
         {
-            // Assuming you have a PatientViewModel instance created elsewhere
-            PatientViewModel patientViewModel = new PatientViewModel();
-
-            // Create an instance of AddPatientView and pass the PatientViewModel to its constructor
-            AddPatientView addPatientView = new AddPatientView(patientViewModel);
-
-            // Set the Content property to the already created addPatientView
-            CC.Content = addPatientView;
+            
+            //CC.Content = new AddPatientView();
         }
 
 

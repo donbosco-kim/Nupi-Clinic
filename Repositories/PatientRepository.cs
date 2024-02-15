@@ -39,7 +39,6 @@ namespace Nupi_Clinic.Repositories
         }
         public void DeletePatient(Patients selectedPatient)
         {
-
             _context.Patients.Remove(selectedPatient);
             _context.SaveChanges();
         }

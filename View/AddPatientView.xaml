@@ -7,7 +7,8 @@
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="400">
     <Grid>
-        <Grid.RowDefinitions>
+
+        <!--<Grid.RowDefinitions>
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
@@ -25,7 +26,7 @@
             <TextBox Text="{Binding PatientFirstName}" Height="30" Width="150" Margin="0,0,0,5"></TextBox>
             <TextBox Text="{Binding PatientMiddleName}" Height="30" Width="150" Margin="0,0,0,5"></TextBox>
             <TextBox Text="{Binding PatientLastName}" Height="30" Width="150" Margin="0,0,0,5"></TextBox>
-            <DatePicker SelectedDate="{Binding PatientBirthdate}" Height="30" Width="100" Margin="0,0,50,5"/>
+            <DatePicker Text="{Binding PatientBirthdate}" Height="30" Width="100" Margin="0,0,50,5"/>
             <ComboBox Text="{Binding PatientGender}" Height="30" Width="80" Margin="0,0,70,5">
                 <ComboBoxItem Content="Male"/>
                 <ComboBoxItem Content="Female"/>
@@ -35,7 +36,8 @@
         </StackPanel>
         <StackPanel Grid.Row="1">
             <Button Content="Add" Command="{Binding AddPatientCommand}" Width="60" Height="30" Margin="150,120,0,0" />
-        </StackPanel>
+        </StackPanel>-->
+        
 
     </Grid>
 </UserControl>

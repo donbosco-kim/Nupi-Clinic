@@ -25,14 +25,10 @@ namespace Nupi_Clinic.View
     /// </summary>
     public partial class AddPatientView : UserControl
     {
-        private readonly PatientViewModel _patientViewModel;
-        public AddPatientView(PatientViewModel patientViewModel)
+        public AddPatientView()
         {
             InitializeComponent();
-            // Assign the provided PatientViewModel to the local variable
-            _patientViewModel = patientViewModel;
-            // Set the DataContext of the view to the PatientViewModel
-            DataContext = _patientViewModel;
         }
     }
+    
 }
