@@ -47,6 +47,7 @@ namespace Nupi_Clinic.View
         {
             
             //CC.Content = new AddPatientView();
+
         }
 
 

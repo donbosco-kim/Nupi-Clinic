@@ -19,11 +19,17 @@
             <Button Content="Search" Command="{Binding FindButtonCommand}" Width="50" Height="30" Margin="10,0,0,0"/>-->
             <Button Content="Delete" Command="{Binding DeleteCommand}" Width="50" Height="30" Margin="10,0,0,0"/>
             <Button Content="Add" Command="{Binding AddPatientCommand}" Width="50" Height="30" Margin="10,0,0,0"/>
-            <Button Content="Update" Command="{Binding UpdatePatientCommand}" Width="50" Height="30" Margin="10,0,0,0"/>
+            <!--<Button Content="Update" Command="{Binding UpdatePatientCommand}" Width="50" Height="30" Margin="10,0,0,0"/> -->
+            <Button Content="Update" Click="Update_Patient" Width="50" Height="30" Margin="10,0,0,0"/>
         </StackPanel>
 
 
         <DataGrid Grid.Row="1" ItemsSource="{Binding Patients}" SelectedItem="{Binding SelectedPatient}" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False">
+            <DataGrid.Resources>
+                <Style TargetType="DataGridRow">
+                    <EventSetter Event="MouseDoubleClick"  Handler="DataGridRow_MouseDoubleClick"/>
+                </Style>
+            </DataGrid.Resources>
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Patient ID" Binding="{Binding PatientID}" Width="30" />
                 <DataGridTextColumn Header="First Name" Binding="{Binding FirstName}" Width="100" />

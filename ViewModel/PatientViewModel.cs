@@ -17,14 +17,17 @@ namespace Nupi_Clinic.ViewModel
         private readonly PatientRepository _repository;
         private ObservableCollection<Patients> _patient;
         private Patients selectedPatient;
+        private int patientId;
 
         public RelayCommand AddPatientCommand => new RelayCommand(execute => AddPatient());
-        public RelayCommand UpdatePatientCommand => new RelayCommand(execute => UpdatePatient());
+        public RelayCommand FindPatientCommand => new RelayCommand(execute => GetPatientById(), canExecute => PatientId > 0);
+        //public RelayCommand UpdatePatientCommand => new RelayCommand(execute => UpdatePatient());
         public RelayCommand DeleteCommand => new RelayCommand(execute => DeletePatient(), canExecute => SelectedPatient != null);
         public PatientViewModel()
         {
-            _repository = new PatientRepository(); // Initialize _repository
+            _repository = new PatientRepository(); // Initialize _repository 
             _patient = new ObservableCollection<Patients>();
+            selectedPatient = new Patients(); // this is needed to initialize properties that bind with text boxes
             LoadPatients();
 
             //PatientBirthdate = DateTime.Now;
@@ -55,13 +58,109 @@ namespace Nupi_Clinic.ViewModel
 
 
         //Properties to bind with TextBoxes
-        public string? PatientFirstName { get; set; }
-        public string? PatientMiddleName { get; set; }
-        public string? PatientLastName { get; set; }
-        public DateTime? PatientBirthdate { get; set; }
-        public string? PatientGender { get; set; }
-        public string? PatientPhoneNumber { get; set; }
-        public string? PatientAddress { get; set; }
+        //Setting below properties solve the issue of Patient data not displaying in the textboxes in UpdatePatientView
+        public int PatientId
+        {
+            get { return patientId; }
+            set
+            {
+                if (value != patientId)
+                {
+                    patientId = value;
+                    OnPropertyChanged(nameof(PatientId));
+                }
+            }
+        }
+        public string? PatientFirstName
+        {
+            get { return selectedPatient.FirstName; }
+            set
+            {
+                if (selectedPatient.FirstName != value)
+                {
+                    selectedPatient.FirstName = value;
+                    OnPropertyChanged(nameof(PatientFirstName));
+                }
+            }
+        }
+
+        public string? PatientMiddleName
+        {
+            get { return selectedPatient.MiddleName; }
+            set
+            {
+                if (selectedPatient.MiddleName != value)
+                {
+                    selectedPatient.MiddleName = value;
+                    OnPropertyChanged(nameof(PatientMiddleName));
+                }
+            }
+        }
+
+        public string? PatientLastName
+        {
+            get { return selectedPatient.LastName; }
+            set
+            {
+                if (selectedPatient.LastName != value)
+                {
+                    selectedPatient.LastName = value;
+                    OnPropertyChanged(nameof(PatientLastName));
+                }
+            }
+        }
+
+        public DateTime? PatientBirthdate
+        {
+            get { return selectedPatient.Birthdate; }
+            set
+            {
+                if (selectedPatient.Birthdate != value)
+                {
+                    selectedPatient.Birthdate = (DateTime)value!;
+                    OnPropertyChanged(nameof(PatientBirthdate));
+                }
+            }
+        }
+
+        public string? PatientGender
+        {
+            get { return selectedPatient.Gender; }
+            set
+            {
+                if (selectedPatient.Gender != value)
+                {
+                    selectedPatient.Gender = value;
+                    OnPropertyChanged(nameof(PatientGender));
+                }
+            }
+        }
+
+        public string? PatientPhoneNumber
+        {
+            get { return selectedPatient.PhoneNumber; }
+            set
+            {
+                if (selectedPatient.PhoneNumber != value)
+                {
+                    selectedPatient.PhoneNumber = value;
+                    OnPropertyChanged(nameof(PatientPhoneNumber));
+                }
+            }
+        }
+
+        public string? PatientAddress
+        {
+            get { return selectedPatient.Address; }
+            set
+            {
+                if (selectedPatient.Address != value)
+                {
+                    selectedPatient.Address = value;
+                    OnPropertyChanged(nameof(PatientAddress));
+                }
+            }
+        }
 
 
         // CRUD operations
@@ -105,18 +204,69 @@ namespace Nupi_Clinic.ViewModel
                 MessageBox.Show("Invalid birthdate format. Please enter a valid date.");
             }
         }
-
-
-        //public IEnumerable<Patients> GetAllPatients()
-        //{
-        //    return _repository.GetAllPatients();
-        //}
-        private void UpdatePatient()
+        private void GetPatientById()
         {
-            _repository.UpdatePatient(SelectedPatient);
+            // Assume you have a method in your repository that fetches a patient by ID
+            Patients? foundPatient = _repository.GetPatient(PatientId);
+
+            if (foundPatient != null)
+            {
+                // Update properties with the found patient's data
+                PatientId = foundPatient.PatientID;
+                PatientFirstName = foundPatient.FirstName;
+                PatientMiddleName = foundPatient.MiddleName;
+                PatientLastName = foundPatient.LastName;
+                PatientBirthdate = foundPatient.Birthdate;
+                PatientGender = foundPatient.Gender;
+                PatientPhoneNumber = foundPatient.PhoneNumber;
+                PatientAddress = foundPatient.Address;
+                //MessageBox.Show($"{PatientFirstName}");
+            }
+            else
+            {
+                // Clear properties if patient is not found
+                PatientFirstName = null;
+                PatientMiddleName = null;
+                PatientLastName = null;
+                PatientBirthdate = null;
+                PatientGender = null;
+                PatientPhoneNumber = null;
+                PatientAddress = null;
+
+                MessageBox.Show("Patient not found.");
+            }
         }
 
-        //I want to delete patient by selecting it and click delete button.
+        //private void UpdatePatient()
+        //{
+        //    // Assume you have a TextBox named patientIdTextBox for entering patient ID
+        //    if (int.TryParse(SearchTerm, out int patientId))
+        //    {
+        //        Patients? existingPatient = _repository.GetPatient(patientId);
+
+        //        if (existingPatient != null && PatientBirthdate.HasValue)
+        //        {
+        //            existingPatient.FirstName = PatientFirstName;
+        //            existingPatient.MiddleName = PatientMiddleName;
+        //            existingPatient.LastName = PatientLastName;
+        //            existingPatient.Birthdate = PatientBirthdate.Value;
+        //            existingPatient.Gender = PatientGender;
+        //            existingPatient.PhoneNumber = PatientPhoneNumber;
+        //            existingPatient.Address = PatientAddress;
+
+        //            _repository.UpdatePatient(existingPatient);
+        //        }
+        //        else
+        //        {
+        //            MessageBox.Show("Patient not found.");
+        //        }
+        //    }
+        //    else
+        //    {
+        //        MessageBox.Show("Invalid patient ID.");
+        //    }
+
+        //}
         private void DeletePatient()
         {
             _repository.DeletePatient(SelectedPatient);
