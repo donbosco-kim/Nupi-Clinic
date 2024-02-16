@@ -29,7 +29,7 @@
             <TextBox Text="{Binding PatientFirstName}" Height="30" Width="150" Margin="0,0,0,5"></TextBox>
             <TextBox Text="{Binding PatientMiddleName}" Height="30" Width="150" Margin="0,0,0,5"></TextBox>
             <TextBox Text="{Binding PatientLastName}" Height="30" Width="150" Margin="0,0,0,5"></TextBox>
-            <DatePicker SelectedDate="{Binding PatientBirthdate}" Height="30" Width="100" Margin="0,0,50,5"/>
+            <DatePicker Text="{Binding PatientBirthdate}" Height="30" Width="100" Margin="0,0,50,5"/>
             <ComboBox Text="{Binding PatientGender}" Height="30" Width="80" Margin="0,0,70,5">
                 <ComboBoxItem Content="Male"/>
                 <ComboBoxItem Content="Female"/>
@@ -38,7 +38,7 @@
             <TextBox Text="{Binding PatientAddress}" Height="30" Width="150" Margin="0,0,0,5"></TextBox>
         </StackPanel>
         <StackPanel Grid.Row="1">
-            <!--<Button Content="Update" Command="{Binding UpdatePatientCommand}" Width="60" Height="30" Margin="150,150,0,0" />-->
+            <Button Content="Update" Command="{Binding UpdatePatientCommand}" Width="60" Height="30" Margin="150,150,0,0" />
         </StackPanel>
     </Grid>
 </Window>

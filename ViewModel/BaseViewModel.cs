@@ -16,5 +16,6 @@ namespace Nupi_Clinic.ViewModel
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
     }
 }
