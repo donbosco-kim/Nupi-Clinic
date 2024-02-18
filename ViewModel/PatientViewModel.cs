@@ -80,7 +80,7 @@ namespace Nupi_Clinic.ViewModel
                 {
                     selectedPatient.FirstName = value;
                     OnPropertyChanged(nameof(PatientFirstName));
-                    OnPropertyChanged(nameof(selectedPatient));
+                    
                 }
             }
         }
@@ -94,7 +94,7 @@ namespace Nupi_Clinic.ViewModel
                 {
                     selectedPatient.MiddleName = value;
                     OnPropertyChanged(nameof(PatientMiddleName));
-                    OnPropertyChanged(nameof(selectedPatient));
+                    
                 }
             }
         }
@@ -108,7 +108,7 @@ namespace Nupi_Clinic.ViewModel
                 {
                     selectedPatient.LastName = value;
                     OnPropertyChanged(nameof(PatientLastName));
-                    OnPropertyChanged(nameof(selectedPatient));
+                    
                 }
             }
         }
@@ -122,7 +122,7 @@ namespace Nupi_Clinic.ViewModel
                 {
                     selectedPatient.Birthdate = (DateTime)value!;
                     OnPropertyChanged(nameof(PatientBirthdate));
-                    OnPropertyChanged(nameof(selectedPatient)); 
+                    
                 }
             }
         }
@@ -136,7 +136,7 @@ namespace Nupi_Clinic.ViewModel
                 {
                     selectedPatient.Gender = value;
                     OnPropertyChanged(nameof(PatientGender));
-                    OnPropertyChanged(nameof(selectedPatient));
+                    
                 }
             }
         }
@@ -150,7 +150,7 @@ namespace Nupi_Clinic.ViewModel
                 {
                     selectedPatient.PhoneNumber = value;
                     OnPropertyChanged(nameof(PatientPhoneNumber));
-                    OnPropertyChanged(nameof(selectedPatient));
+                    
                 }
             }
         }
@@ -164,7 +164,7 @@ namespace Nupi_Clinic.ViewModel
                 {
                     selectedPatient.Address = value;
                     OnPropertyChanged(nameof(PatientAddress));
-                    OnPropertyChanged(nameof(selectedPatient));
+                    
                 }
             }
         }

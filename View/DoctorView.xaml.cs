@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Nupi_Clinic.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,8 @@ namespace Nupi_Clinic.View
         public DoctorView()
         {
             InitializeComponent();
+            DoctorViewModel vm = new DoctorViewModel();
+            DataContext = vm;
         }
     }
 }

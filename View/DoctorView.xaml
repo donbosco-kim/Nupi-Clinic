@@ -12,22 +12,28 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <DataGrid ItemsSource="{Binding Doctors}" SelectedItem="{Binding SelectedDoctor}"  Height="150" VerticalAlignment="Top" Margin="10,20,10,0"  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False">
-
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="First Name" Binding="{Binding FirstName}"/>
+                <DataGridTextColumn Header="Last Name" Binding="{Binding LastName}"/>
+                <DataGridTextColumn Header="Specialty" Binding="{Binding Specialty}"/>
+                <DataGridTextColumn Header="Phone Number" Binding="{Binding PhoneNumber}"/>
+            </DataGrid.Columns>
         </DataGrid>
+        <Button Grid.Row="1" Content="Delete" Width="75" Height="30" Margin="0,0,5,0" Command="{Binding DeleteCommand}"/>
         
         <!---Add a Doctor-->
         <StackPanel Grid.Row="1" HorizontalAlignment="Left" VerticalAlignment="Bottom" Margin="20,0,0,10">
             <GroupBox Header="Add Doctor" Height="240" Width="200" BorderThickness="1" BorderBrush="DarkBlue" >
                 <StackPanel>
                     <Label Content="First Name" Width="100"/>
-                    <TextBox Width="100"/>
+                    <TextBox Text="{Binding DoctorFirstName}" Width="100"/>
                     <Label Content="Last Name" Width="100"/>
-                    <TextBox Width="100" />
+                    <TextBox Text="{Binding DoctorLastName}" Width="100" />
                     <Label Content="Specialty" Width="100"/>
-                    <TextBox Width="100" />
+                    <TextBox Text="{Binding DoctorSpecialty}" Width="100" />
                     <Label Content="Phone Number" Width="100"/>
-                    <TextBox Width="100" />
-                    <Button Content="Add Doctor" Width="80" Margin="0,8"/>
+                    <TextBox Text="{Binding DoctorPhoneNumber}" Width="100" />
+                    <Button Content="Add Doctor" Command="{Binding AddDoctorCommand}" Width="80" Margin="0,8"/>
                 </StackPanel>
             </GroupBox>
         </StackPanel>
@@ -36,14 +42,14 @@
             <GroupBox Header="Update Doctor" Height="240" Width="200" BorderThickness="1" BorderBrush="DarkBlue" >
                 <StackPanel>
                     <Label Content="First Name" Width="100"/>
-                    <TextBox Width="100" Text="{Binding SelectedItem.FirstName, UpdateSourceTrigger=PropertyChanged}"/>
+                    <TextBox Width="100" Text="{Binding SelectedDoctor.FirstName, UpdateSourceTrigger=PropertyChanged}"/>
                     <Label Content="Last Name" Width="100"/>
-                    <TextBox Width="100" Text="{Binding SelectedItem.LastName, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBox Width="100" Text="{Binding SelectedDoctor.LastName, UpdateSourceTrigger=PropertyChanged}" />
                     <Label Content="Specialty" Width="100"/>
-                    <TextBox Width="100" Text="{Binding SelectedItem.Specialty, UpdateSourceTrigger=PropertyChanged}" />
+                    <TextBox Width="100" Text="{Binding SelectedDoctor.Specialty, UpdateSourceTrigger=PropertyChanged}" />
                     <Label Content="Phone Number" Width="100"/>
-                    <TextBox Width="100" Text="{Binding SelectedItem.PhoneNumber, UpdateSourceTrigger=PropertyChanged}" />
-                    <Button Content="Update Doctor" Width="80" Margin="0,8"/>
+                    <TextBox Width="100" Text="{Binding SelectedDoctor.PhoneNumber, UpdateSourceTrigger=PropertyChanged}" />
+                    <Button Content="Update Doctor" Command="{Binding UpdateCommand}" Width="90" Margin="0,8"/>
                 </StackPanel>
             </GroupBox>
         </StackPanel>

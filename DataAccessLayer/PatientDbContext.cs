@@ -18,7 +18,8 @@ namespace Nupi_Clinic.DataAccessLayer
         {
             modelBuilder.Entity<Patients>().HasKey(p => p.PatientID);
             modelBuilder.Entity<Patients>().ToTable("Patients", schema: "ClinicDB");
-
+            modelBuilder.Entity<Doctors>().HasKey(p => p.DoctorID);
+            modelBuilder.Entity<Doctors>().ToTable("Doctors", schema: "ClinicDB");
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
