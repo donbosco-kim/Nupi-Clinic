@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Nupi_Clinic.Model
 {
-    internal class Admin_Info
+    public class Admin_Info
     {
         public string FirstName {  get; set; }
         public string LastName { get; set; }
