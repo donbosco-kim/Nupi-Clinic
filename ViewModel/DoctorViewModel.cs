@@ -139,10 +139,6 @@ namespace Nupi_Clinic.ViewModel
             _repository.DeleteDoctor(SelectedDoctor);
             Doctors.Remove(selectedDoctor);
         }
-        private void SaveDoctor()
-        {
-            //save tos sql database
-        }
         private bool CanSave()
         {
             //is the database connected

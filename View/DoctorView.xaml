@@ -8,10 +8,10 @@
         Title="DoctorView" Height="450" Width="800">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="180"/>
+            <RowDefinition Height="150"/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <DataGrid ItemsSource="{Binding Doctors}" SelectedItem="{Binding SelectedDoctor}"  Height="150" VerticalAlignment="Top" Margin="10,20,10,0"  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False">
+        <DataGrid ItemsSource="{Binding Doctors}" SelectedItem="{Binding SelectedDoctor}"  Height="120" VerticalAlignment="Top" Margin="10,10,10,0"  AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="First Name" Binding="{Binding FirstName}"/>
                 <DataGridTextColumn Header="Last Name" Binding="{Binding LastName}"/>
@@ -19,6 +19,7 @@
                 <DataGridTextColumn Header="Phone Number" Binding="{Binding PhoneNumber}"/>
             </DataGrid.Columns>
         </DataGrid>
+        <!--Delete a Doctor-->
         <Button Grid.Row="1" Content="Delete" Width="75" Height="30" Margin="0,0,5,0" Command="{Binding DeleteCommand}"/>
         
         <!---Add a Doctor-->
