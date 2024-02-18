@@ -132,6 +132,7 @@ namespace Nupi_Clinic.ViewModel
         private void UpdateDoctor()
         {
             _repository.UpdateDoctor(selectedDoctor);
+            MessageBox.Show("Doctor updated successfully!");
         }
 
         private void DeleteDoctor()
