@@ -35,12 +35,14 @@ namespace Nupi_Clinic.View
             CC.Content = new PatientView();
 
         }
-
-
         private void View_Patient_Click(object sender, RoutedEventArgs e)
         {
             CC.Content = new PatientView();
 
+        }
+        private void View_Doctor_Click(object sender, RoutedEventArgs e)
+        {
+            CC.Content = new DoctorView();
         }
 
 
@@ -55,5 +57,7 @@ namespace Nupi_Clinic.View
             dBAdmin.Logout();
             this.Close();
         }
+
+        
     }
 }

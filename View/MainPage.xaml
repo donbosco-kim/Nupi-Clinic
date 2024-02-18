@@ -21,6 +21,7 @@
         </Grid.ColumnDefinitions>
         <StackPanel Background="Beige">
             <Button Style="{StaticResource btns}" Content="Home" Click="View_Patient_Click"/>
+            <Button Style="{StaticResource btns}" Content="Doctor" Click="View_Doctor_Click"/>
             <Button Style="{StaticResource btns}" Content="Schedule" Click="Schedule_Appointment_Click"/>
             <Button x:Name="logout" Height="60" Background="Gray" Foreground="White" Margin="0,320,0,0" Click="Logout_Button_Click">Log Out</Button>
         </StackPanel>
