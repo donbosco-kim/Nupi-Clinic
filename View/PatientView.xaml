@@ -42,7 +42,7 @@
             </DataGrid.Columns>
         </DataGrid>
 
-        <StackPanel Grid.Row="2" HorizontalAlignment="Left" Margin="100,0,0,0">
+        <StackPanel Grid.Row="2" HorizontalAlignment="Left" Margin="10,5,0,0">
             <Label Height="30" Margin="0,0,0,5" Content="First Name: "/>
             <Label Height="30" Margin="0,0,0,5" Content="Middle Name: "/>
             <Label Height="30" Margin="0,0,0,5" Content="Last Name: "/>
@@ -52,7 +52,7 @@
             <Label Height="30" Margin="0,0,0,5" Content="Address: "/>
         </StackPanel>
 
-        <StackPanel Grid.Row="2" HorizontalAlignment="Right" Margin="0,0,100,0">
+        <StackPanel Grid.Row="2" HorizontalAlignment="Right" Margin="0,5,400,0">
             <TextBox Text="{Binding PatientFirstName}" Height="30" Width="150" Margin="0,0,0,5"></TextBox>
             <TextBox Text="{Binding PatientMiddleName}" Height="30" Width="150" Margin="0,0,0,5"></TextBox>
             <TextBox Text="{Binding PatientLastName}" Height="30" Width="150" Margin="0,0,0,5"></TextBox>

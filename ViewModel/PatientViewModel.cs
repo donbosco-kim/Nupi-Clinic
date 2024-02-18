@@ -122,7 +122,7 @@ namespace Nupi_Clinic.ViewModel
                 {
                     selectedPatient.Birthdate = (DateTime)value!;
                     OnPropertyChanged(nameof(PatientBirthdate));
-                    OnPropertyChanged(nameof(selectedPatient)); // Notify UI about the change in selectedPatient
+                    OnPropertyChanged(nameof(selectedPatient)); 
                 }
             }
         }
