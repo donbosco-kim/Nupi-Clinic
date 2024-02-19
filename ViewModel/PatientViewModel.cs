@@ -244,31 +244,8 @@ namespace Nupi_Clinic.ViewModel
 
         private void UpdatePatient()
         {
-            try
-            {
-                Patients? existingPatient = _repository.GetPatient(PatientId);
-                if (existingPatient != null && PatientBirthdate.HasValue)
-                {
-                    existingPatient.FirstName = PatientFirstName;
-                    existingPatient.MiddleName = PatientMiddleName;
-                    existingPatient.LastName = PatientLastName;
-                    existingPatient.Birthdate = PatientBirthdate.Value;
-                    existingPatient.Gender = PatientGender;
-                    existingPatient.PhoneNumber = PatientPhoneNumber;
-                    existingPatient.Address = PatientAddress;
-
-                    _repository.UpdatePatient(existingPatient);
-                    MessageBox.Show("Updated Patient successfully.");
-                }
-                else
-                {
-                    MessageBox.Show("Failed to update Patient.");
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show($"An error occurred: {ex.Message}");
-            }
+            _repository.UpdatePatient(selectedPatient);
+            MessageBox.Show("Patient updated successfully!");
         }
         private void DeletePatient()
         {
