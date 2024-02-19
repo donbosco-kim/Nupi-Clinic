@@ -10,7 +10,7 @@ namespace Nupi_Clinic.DataAccessLayer
 {
     public class PatientDbContext : DbContext
     {
-        //public DbSet<Admin_Info> Admins { get; set; }
+        public DbSet<Admin_Info> Admins { get; set; }
         public DbSet<Patients> Patients { get; set; }
         public DbSet<Doctors> Doctors { get; set; }
         //public  DbSet<Appointment> Appointment { get; set; }
