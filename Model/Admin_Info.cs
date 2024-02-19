@@ -8,6 +8,7 @@ namespace Nupi_Clinic.Model
 {
     public class Admin_Info
     {
+        public int AdminID { get; set; }
         public string? FirstName {  get; set; }
         public string? LastName { get; set; }
         public string? UserName { get; set; }

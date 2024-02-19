@@ -17,26 +17,26 @@ namespace Nupi_Clinic.Repositories
             _context = new PatientDbContext();
             _context.Database.EnsureCreated(); // Ensure the database is created
         }
-        public IEnumerable<Admins> GetAllDoctor()
+        public IEnumerable<Admin_Info> GetAllDoctor()
         {
             return _context.Admins.ToList();
         }
 
-        public Admins? GetDoctor(int adminId)
+        public Admin_Info? GetDoctor(int adminId)
         {
             return _context.Admins.Find(adminId);
         }
-        public void AddAdmin(Admins admin)
+        public void AddAdmin(Admin_Info admin)
         {
             _context.Admins.Add(admin);
             _context.SaveChanges();
         }
-        public void UpdateDoctor(Admins admin)
+        public void UpdateDoctor(Admin_Info admin)
         {
             _context.Admins.Update(admin);
             _context.SaveChanges();
         }
-        public void DeleteDoctor(Admins selectedAdmin)
+        public void DeleteDoctor(Admin_Info selectedAdmin)
         {
             _context.Admins.Remove(selectedAdmin);
             _context.SaveChanges();
