@@ -20,6 +20,8 @@ namespace Nupi_Clinic.DataAccessLayer
             modelBuilder.Entity<Patients>().ToTable("Patients", schema: "ClinicDB");
             modelBuilder.Entity<Doctors>().HasKey(p => p.DoctorID);
             modelBuilder.Entity<Doctors>().ToTable("Doctors", schema: "ClinicDB");
+            modelBuilder.Entity<Admin_Info>().HasKey(p => p.AdminID);
+            modelBuilder.Entity<Admin_Info>().ToTable("Admins", schema: "ClinicDB");
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
