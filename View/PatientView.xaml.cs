@@ -32,12 +32,6 @@ namespace Nupi_Clinic.View
             DataContext = _patientViewModel;
         }
 
-        private void Update_Patient(object sender, RoutedEventArgs e)
-        {
-            UpdatePatientView updatePatient = new UpdatePatientView();
-            updatePatient.Show();
-        }
-
         private void DataGridRow_MouseDoubleClick(object sender, MouseButtonEventArgs e)
         {
         //    if (e.ChangedButton == MouseButton.Left)
