@@ -76,12 +76,11 @@ namespace Nupi_Clinic.ViewModel
             get { return selectedPatient.FirstName; }
             set
             {
-                if (selectedPatient.FirstName != value)
-                {
-                    selectedPatient.FirstName = value;
-                    OnPropertyChanged(nameof(PatientFirstName));
-                    
-                }
+
+                selectedPatient.FirstName = value;
+                OnPropertyChanged(nameof(PatientFirstName));
+
+
             }
         }
 
@@ -90,12 +89,11 @@ namespace Nupi_Clinic.ViewModel
             get { return selectedPatient.MiddleName; }
             set
             {
-                if (selectedPatient.MiddleName != value)
-                {
-                    selectedPatient.MiddleName = value;
-                    OnPropertyChanged(nameof(PatientMiddleName));
-                    
-                }
+
+                selectedPatient.MiddleName = value;
+                OnPropertyChanged(nameof(PatientMiddleName));
+
+
             }
         }
 
@@ -104,12 +102,11 @@ namespace Nupi_Clinic.ViewModel
             get { return selectedPatient.LastName; }
             set
             {
-                if (selectedPatient.LastName != value)
-                {
-                    selectedPatient.LastName = value;
-                    OnPropertyChanged(nameof(PatientLastName));
-                    
-                }
+
+                selectedPatient.LastName = value;
+                OnPropertyChanged(nameof(PatientLastName));
+
+
             }
         }
 
@@ -118,12 +115,11 @@ namespace Nupi_Clinic.ViewModel
             get { return selectedPatient.Birthdate; }
             set
             {
-                if (selectedPatient.Birthdate != value)
-                {
-                    selectedPatient.Birthdate = (DateTime)value!;
-                    OnPropertyChanged(nameof(PatientBirthdate));
-                    
-                }
+
+                selectedPatient.Birthdate = (DateTime)value!;
+                OnPropertyChanged(nameof(PatientBirthdate));
+
+
             }
         }
 
@@ -132,12 +128,11 @@ namespace Nupi_Clinic.ViewModel
             get { return selectedPatient.Gender; }
             set
             {
-                if (selectedPatient.Gender != value)
-                {
-                    selectedPatient.Gender = value;
-                    OnPropertyChanged(nameof(PatientGender));
-                    
-                }
+
+                selectedPatient.Gender = value;
+                OnPropertyChanged(nameof(PatientGender));
+
+
             }
         }
 
@@ -146,12 +141,8 @@ namespace Nupi_Clinic.ViewModel
             get { return selectedPatient.PhoneNumber; }
             set
             {
-                if (selectedPatient.PhoneNumber != value)
-                {
-                    selectedPatient.PhoneNumber = value;
-                    OnPropertyChanged(nameof(PatientPhoneNumber));
-                    
-                }
+                selectedPatient.PhoneNumber = value;
+                OnPropertyChanged(nameof(PatientPhoneNumber));
             }
         }
 
@@ -160,12 +151,9 @@ namespace Nupi_Clinic.ViewModel
             get { return selectedPatient.Address; }
             set
             {
-                if (selectedPatient.Address != value)
-                {
-                    selectedPatient.Address = value;
-                    OnPropertyChanged(nameof(PatientAddress));
-                    
-                }
+
+                selectedPatient.Address = value;
+                OnPropertyChanged(nameof(PatientAddress));
             }
         }
 
@@ -205,6 +193,14 @@ namespace Nupi_Clinic.ViewModel
                 _repository.AddPatient(newPatient);
                 Patients.Add(newPatient); // Add to the ObservableCollection
                 MessageBox.Show("Patient added successfully!");
+
+                PatientFirstName = "";
+                PatientMiddleName = "";
+                PatientLastName = "";
+                PatientBirthdate = DateTime.Now;
+                PatientGender = "";
+                PatientPhoneNumber = "";
+                PatientAddress = "";
             }
             else
             {
