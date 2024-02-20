@@ -7,6 +7,7 @@ using System.Windows;
 
 namespace Nupi_Clinic.Data
 {
+    //Unused class
     internal class DatabaseConnector
     {
         private readonly string connectionString;

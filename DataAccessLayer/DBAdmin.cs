@@ -17,6 +17,7 @@ using System.Reflection.PortableExecutable;
 
 namespace Nupi_Clinic.Data
 {
+    //Unused class
     internal class DBAdmin
     {
         private readonly DatabaseConnector connector;
