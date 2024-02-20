@@ -22,13 +22,12 @@ namespace Nupi_Clinic
     /// </summary>
     public partial class MainWindow : Window
     {
-        //private readonly DatabaseConnector connector;
+        
         public MainWindow()
         {
             InitializeComponent();
-            AdminViewModel vm = new AdminViewModel();
+            AdminViewModel vm = new AdminViewModel(this);
             DataContext = vm;
-            //connector = new DatabaseConnector();
         }
 
         //private void Login_button_click(object sender, RoutedEventArgs e)

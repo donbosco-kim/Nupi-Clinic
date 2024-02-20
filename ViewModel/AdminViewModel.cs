@@ -16,6 +16,7 @@ namespace Nupi_Clinic.ViewModel
     public class AdminViewModel : BaseViewModel
     {
         //Fields
+        private readonly MainWindow _mainWindow;
         private readonly AdminRepository? _repository;
         private Admin_Info? admin;
         //private string? userName;
@@ -23,8 +24,9 @@ namespace Nupi_Clinic.ViewModel
 
         public RelayCommand AddAdminCommand => new RelayCommand(execute => AddAdmin()); //need to check if admin already exist
         public RelayCommand LoginAdminCommand => new RelayCommand(execute => Login(), canExecute => CanLogin());
-        public AdminViewModel()
+        public AdminViewModel(MainWindow mainWindow)
         {
+            _mainWindow = mainWindow;
             _repository = new AdminRepository();
             admin = new Admin_Info();
         }
@@ -130,8 +132,11 @@ namespace Nupi_Clinic.ViewModel
                 //direct to MainPage view
                 MainPage main = new MainPage();
                 main.Show();
-                MainWindow window = new MainWindow(); 
-                window.Close();
+                //close the MainWindow
+                // Close the existing MainWindow
+                _mainWindow.Close();
+                //MainWindow window = new MainWindow();
+                //window.Close();
             }
             else
             {
@@ -147,6 +152,5 @@ namespace Nupi_Clinic.ViewModel
                 validData = true;
             return validData;
         }
-        
     }
 }
