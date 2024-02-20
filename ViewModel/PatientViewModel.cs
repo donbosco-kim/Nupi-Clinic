@@ -242,6 +242,7 @@ namespace Nupi_Clinic.ViewModel
         {
             _repository.UpdatePatient(selectedPatient);
             MessageBox.Show("Patient updated successfully!");
+            //clear properties after update
         }
         private void DeletePatient()
         {
