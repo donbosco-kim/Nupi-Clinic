@@ -13,6 +13,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Windows.Markup;
 using static System.Net.Mime.MediaTypeNames;
+using Nupi_Clinic.ViewModel;
 
 namespace Nupi_Clinic
 {
@@ -21,11 +22,13 @@ namespace Nupi_Clinic
     /// </summary>
     public partial class MainWindow : Window
     {
-        private readonly DatabaseConnector connector;
+        //private readonly DatabaseConnector connector;
         public MainWindow()
         {
             InitializeComponent();
-            connector = new DatabaseConnector();
+            AdminViewModel vm = new AdminViewModel();
+            DataContext = vm;
+            //connector = new DatabaseConnector();
         }
 
         //private void Login_button_click(object sender, RoutedEventArgs e)

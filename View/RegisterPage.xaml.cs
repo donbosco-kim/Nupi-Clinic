@@ -31,23 +31,23 @@ namespace Nupi_Clinic.View
 
         private void submit_button_click(object sender, RoutedEventArgs e)
         {
-            DBAdmin newAdmin = new DBAdmin();
-            if (password.Password != confirmpassword.Password)
-            {
-                MessageBox.Show("Password doesn't match");
-            }
-            else if (admin_first_name.Text == string.Empty || admin_last_name.Text == string.Empty || user_name.Text == string.Empty || password.Password == string.Empty || password.Password == string.Empty)
-            {
-                MessageBox.Show("Pls Fill Up All The Fields");
-            }
+            //DBAdmin newAdmin = new DBAdmin();
+            //if (password.Password != confirmpassword.Password)
+            //{
+            //    MessageBox.Show("Password doesn't match");
+            //}
+            //else if (admin_first_name.Text == string.Empty || admin_last_name.Text == string.Empty || user_name.Text == string.Empty || password.Password == string.Empty || password.Password == string.Empty)
+            //{
+            //    MessageBox.Show("Pls Fill Up All The Fields");
+            //}
 
-            else
-            {
+            //else
+            //{
                 
-                Admin_Info? add = new(admin_first_name.Text.Trim(), admin_last_name.Text.Trim(), user_name.Text.Trim(), password.Password.Trim());
-                newAdmin.AddAdmin(add);
-                this.Close();
-            }
+            //    Admin_Info? add = new(admin_first_name.Text.Trim(), admin_last_name.Text.Trim(), user_name.Text.Trim(), password.Password.Trim());
+            //    newAdmin.AddAdmin(add);
+            //    this.Close();
+            //}
         }
 
         private void reset_button_click(object sender, RoutedEventArgs e)

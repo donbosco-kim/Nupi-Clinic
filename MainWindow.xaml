@@ -3,7 +3,7 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:Nupi_Clinic"
+        xmlns:local="clr-namespace:Nupi_Clinic" xmlns:customcontrols="clr-namespace:Nupi_Clinic.CustomControl"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="400" WindowStartupLocation="CenterScreen"
         ResizeMode="NoResize">
@@ -23,14 +23,17 @@
         <StackPanel Grid.Row="1" HorizontalAlignment="Center">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="User" FontSize="15" Foreground="Black"></TextBlock>
-                <TextBox Text="{Binding AdminUserName}" FontWeight="Light" FontSize="15" Width="235" Margin="37,0,0,5"/>
+                <TextBox Text="{Binding AdminUserName, UpdateSourceTrigger=PropertyChanged}" FontWeight="Light" FontSize="15" Width="235" Margin="37,0,0,5"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Password" FontSize="15" Foreground="Black"></TextBlock>
-                <PasswordBox Name="password" FontSize="15" Width="235" Margin="5,0,0,0"/>
+                <customcontrols:BindablePasswordBox Password = "{Binding AdminPassword, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"                            
+                                                    Margin = "5,0,0,0" >
+                </customcontrols:BindablePasswordBox>
+                <!--<PasswordBox Name="password" FontSize="15" Width="235" Margin="5,0,0,0"/>-->
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,40,0,0" HorizontalAlignment="Center">
-                <Button x:Name="btnlogin" Click="Login_button_click" Width="100" Height="35" Margin="0,0,60,0">Login</Button>
+                <Button Command="{Binding LoginAdminCommand}" Width="100" Height="35" Margin="0,0,60,0">Login</Button>
                 <Button x:Name="btnregis" Click="Register_button_click" Width="100" Height="35">Register</Button>
             </StackPanel>
         </StackPanel>

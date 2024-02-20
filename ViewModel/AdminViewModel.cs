@@ -26,6 +26,7 @@ namespace Nupi_Clinic.ViewModel
         public AdminViewModel()
         {
             _repository = new AdminRepository();
+            admin = new Admin_Info();
         }
         //properties
         public string? AdminFirstName
