@@ -30,7 +30,6 @@
                 <customcontrols:BindablePasswordBox Password = "{Binding AdminPassword, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"                            
                                                     Margin = "5,0,0,0" >
                 </customcontrols:BindablePasswordBox>
-                <!--<PasswordBox Name="password" FontSize="15" Width="235" Margin="5,0,0,0"/>-->
             </StackPanel>
             <StackPanel Orientation="Horizontal" Margin="0,40,0,0" HorizontalAlignment="Center">
                 <Button Command="{Binding LoginAdminCommand}" Width="100" Height="35" Margin="0,0,60,0">Login</Button>
