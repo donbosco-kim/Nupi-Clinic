@@ -1,5 +1,7 @@
-﻿using Nupi_Clinic.Model;
+﻿using Nupi_Clinic.Command;
+using Nupi_Clinic.Model;
 using Nupi_Clinic.Repositories;
+using Nupi_Clinic.View;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,6 +21,8 @@ namespace Nupi_Clinic.ViewModel
         //private string? userName;
         //private SecureString? password;
 
+        public RelayCommand AddAdminCommand => new RelayCommand(execute => AddAdmin()); //need to check if admin already exist
+        public RelayCommand LoginAdminCommand => new RelayCommand(execute => Login(), canExecute => CanLogin());
         public AdminViewModel()
         {
             _repository = new AdminRepository();
@@ -115,6 +119,32 @@ namespace Nupi_Clinic.ViewModel
 
                 MessageBox.Show("Admin added successfully!");
             }     
+        }
+        private void Login()
+        {
+            string hashedPassword = ComputeSha256Hash(AdminPassword!);
+            var isValidAdmin = _repository?.AuthenticateUser(new System.Net.NetworkCredential(AdminUserName, hashedPassword));
+            if ((bool)isValidAdmin!)
+            {
+                //direct to MainPage view
+                MainPage main = new MainPage();
+                main.Show();
+                MainWindow window = new MainWindow(); 
+                window.Close();
+            }
+            else
+            {
+                MessageBox.Show("Incorrect UserName or Password");
+            }
+        }
+        private bool CanLogin()
+        {
+            bool validData;
+            if (string.IsNullOrWhiteSpace(AdminUserName) || AdminPassword == null)
+                validData = false;
+            else
+                validData = true;
+            return validData;
         }
         
     }

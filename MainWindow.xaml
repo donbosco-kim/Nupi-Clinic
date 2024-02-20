@@ -23,7 +23,7 @@
         <StackPanel Grid.Row="1" HorizontalAlignment="Center">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="User" FontSize="15" Foreground="Black"></TextBlock>
-                <TextBox Name="user_name" FontWeight="Light" FontSize="15" Width="235" Margin="37,0,0,5"/>
+                <TextBox Text="{Binding AdminUserName}" FontWeight="Light" FontSize="15" Width="235" Margin="37,0,0,5"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
                 <TextBlock Text="Password" FontSize="15" Foreground="Black"></TextBlock>

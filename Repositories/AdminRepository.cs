@@ -3,6 +3,7 @@ using Nupi_Clinic.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,12 +18,22 @@ namespace Nupi_Clinic.Repositories
             _context = new PatientDbContext();
             _context.Database.EnsureCreated(); // Ensure the database is created
         }
-        public IEnumerable<Admin_Info> GetAllDoctor()
+        public bool AuthenticateUser (NetworkCredential credential)
+        {
+            // Basic example: Check if a user with the provided credentials exists in the database
+            var admin = _context.Admins.FirstOrDefault(a => a.UserName == credential.UserName && a.Password == credential.Password);
+
+            // If an admin is found, authentication is successful
+            bool validAdmin = admin != null;
+
+            return validAdmin;
+        }
+        public IEnumerable<Admin_Info> GetAllAdmin()
         {
             return _context.Admins.ToList();
         }
 
-        public Admin_Info? GetDoctor(int adminId)
+        public Admin_Info? GetAdmin(int adminId)
         {
             return _context.Admins.Find(adminId);
         }
@@ -31,12 +42,12 @@ namespace Nupi_Clinic.Repositories
             _context.Admins.Add(admin);
             _context.SaveChanges();
         }
-        public void UpdateDoctor(Admin_Info admin)
+        public void UpdateAdmin(Admin_Info admin)
         {
             _context.Admins.Update(admin);
             _context.SaveChanges();
         }
-        public void DeleteDoctor(Admin_Info selectedAdmin)
+        public void DeleteAdmin(Admin_Info selectedAdmin)
         {
             _context.Admins.Remove(selectedAdmin);
             _context.SaveChanges();
