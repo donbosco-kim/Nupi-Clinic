@@ -19,4 +19,8 @@ As of now, the Nupi-Clinic project includes essential features for clinic manage
 
 - Enhance Admin: Enhance the admin login functionality to show a welcome message after a successful login. The welcome message will greet the admin by their name.
 
-- Data Validation Rule: Implement a data validation to replace MessageBox.Show for displaying error messages to follow MVVM pattern. 
+- Data Validation Rule: Implement a data validation to replace MessageBox.Show for displaying error messages to follow MVVM pattern.
+  
+![doctor](https://github.com/donbosco-kim/Nupi-Clinic/assets/90068289/6deb1df1-3267-48f5-b82d-4771ac745647)
+
+![patientview](https://github.com/donbosco-kim/Nupi-Clinic/assets/90068289/da1eec25-4e8f-420e-8088-838fff9c903f)
