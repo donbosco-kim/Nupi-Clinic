@@ -1,5 +1,6 @@
 ﻿using Nupi_Clinic.Data;
 using Nupi_Clinic.Model;
+using Nupi_Clinic.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,47 +22,27 @@ namespace Nupi_Clinic.View
     /// </summary>
     public partial class RegisterPage : Window
     {
-        private readonly DatabaseConnector connector;
-
+        private readonly MainWindow? _mainWindow;
         public RegisterPage()
         {
             InitializeComponent();
-            connector = new DatabaseConnector();
-        }
+            AdminViewModel vm = new AdminViewModel(_mainWindow);
+            DataContext = vm;
 
-        private void submit_button_click(object sender, RoutedEventArgs e)
-        {
-            //DBAdmin newAdmin = new DBAdmin();
-            //if (password.Password != confirmpassword.Password)
-            //{
-            //    MessageBox.Show("Password doesn't match");
-            //}
-            //else if (admin_first_name.Text == string.Empty || admin_last_name.Text == string.Empty || user_name.Text == string.Empty || password.Password == string.Empty || password.Password == string.Empty)
-            //{
-            //    MessageBox.Show("Pls Fill Up All The Fields");
-            //}
-
-            //else
-            //{
-                
-            //    Admin_Info? add = new(admin_first_name.Text.Trim(), admin_last_name.Text.Trim(), user_name.Text.Trim(), password.Password.Trim());
-            //    newAdmin.AddAdmin(add);
-            //    this.Close();
-            //}
         }
 
         private void reset_button_click(object sender, RoutedEventArgs e)
         {
-            admin_first_name.Text = string.Empty;
-            admin_last_name.Text = string.Empty;
-            user_name.Text = string.Empty;
-            password.Password = string.Empty;
-            confirmpassword.Password = string.Empty;
+            //admin_first_name.Text = string.Empty;
+            //admin_last_name.Text = string.Empty;
+            //user_name.Text = string.Empty;
+            //password.Password = string.Empty;
+            //confirmpassword.Password = string.Empty;
         }
 
         private void cancel_button_click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            Close();
         }
     }
 }

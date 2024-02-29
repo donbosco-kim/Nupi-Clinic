@@ -13,7 +13,7 @@ namespace Nupi_Clinic.DataAccessLayer
         public DbSet<Admin_Info> Admins { get; set; }
         public DbSet<Patients> Patients { get; set; }
         public DbSet<Doctors> Doctors { get; set; }
-        //public  DbSet<Appointment> Appointment { get; set; }
+        public  DbSet<Appointments> Appointments { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Patients>().HasKey(p => p.PatientID);
@@ -22,6 +22,8 @@ namespace Nupi_Clinic.DataAccessLayer
             modelBuilder.Entity<Doctors>().ToTable("Doctors", schema: "ClinicDB");
             modelBuilder.Entity<Admin_Info>().HasKey(p => p.AdminID);
             modelBuilder.Entity<Admin_Info>().ToTable("Admins", schema: "ClinicDB");
+            modelBuilder.Entity<Appointments>().HasKey(p => p.AppointmentID);
+            modelBuilder.Entity<Appointments>().ToTable("Appointments", schema: "ClinicDB");
         }
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

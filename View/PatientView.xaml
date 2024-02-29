@@ -23,11 +23,7 @@
 
 
         <DataGrid Grid.Row="1" ItemsSource="{Binding Patients}" SelectedItem="{Binding SelectedPatient}" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False">
-            <DataGrid.Resources>
-                <Style TargetType="DataGridRow">
-                    <EventSetter Event="MouseDoubleClick"  Handler="DataGridRow_MouseDoubleClick"/>
-                </Style>
-            </DataGrid.Resources>
+            
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Patient ID" Binding="{Binding PatientID}" Width="30" />
                 <DataGridTextColumn Header="First Name" Binding="{Binding FirstName}" Width="100" />

@@ -20,7 +20,7 @@ namespace Nupi_Clinic.Repositories
         }
         public bool AuthenticateUser (NetworkCredential credential)
         {
-            // Basic example: Check if a user with the provided credentials exists in the database
+            // Check if a user with the provided credentials exists in the database
             var admin = _context.Admins.FirstOrDefault(a => a.UserName == credential.UserName && a.Password == credential.Password);
 
             // If an admin is found, authentication is successful

@@ -22,7 +22,7 @@ namespace Nupi_Clinic.ViewModel
         //private string? userName;
         //private SecureString? password;
 
-        public RelayCommand AddAdminCommand => new RelayCommand(execute => AddAdmin()); //need to check if admin already exist
+        public RelayCommand AddAdminCommand => new RelayCommand(execute => AddAdmin()); //need to check if admin with the name or username already exist
         public RelayCommand LoginAdminCommand => new RelayCommand(execute => Login(), canExecute => CanLogin());
         public AdminViewModel(MainWindow mainWindow)
         {

@@ -31,18 +31,6 @@ namespace Nupi_Clinic.View
             PatientViewModel _patientViewModel = new PatientViewModel();
             DataContext = _patientViewModel;
         }
-
-        private void DataGridRow_MouseDoubleClick(object sender, MouseButtonEventArgs e)
-        {
-        //    if (e.ChangedButton == MouseButton.Left)
-        //    {
-        //        var row = e.Source as DataGridRow;
-
-        //        UpdatePatientView updatePatient = new UpdatePatientView(row.Item);
-        //        updatePatient.Owner = this;
-
-        //        updatePatient.Show();
-        //    }
-        }
+       
     }
 }

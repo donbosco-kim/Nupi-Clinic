@@ -30,26 +30,6 @@ namespace Nupi_Clinic
             DataContext = vm;
         }
 
-        //private void Login_button_click(object sender, RoutedEventArgs e)
-        //{
-            
-        //    DBAdmin dBAdmin = new DBAdmin();
-        //    string hashedPassword = dBAdmin.ComputeSha256Hash(password.Password);
-
-        //    if (dBAdmin.Login(user_name.Text, hashedPassword))
-        //    {
-        //        //direct to MainPage view
-        //        MainPage main = new MainPage();
-        //        main.Show();
-        //        this.Close();
-        //    }
-        //    else
-        //    {
-        //        MessageBox.Show("Incorrect UserName or Password");
-        //    }
-        //}
-
-
         private void Register_button_click(object sender, RoutedEventArgs e)
         {
             RegisterPage win = new RegisterPage();
