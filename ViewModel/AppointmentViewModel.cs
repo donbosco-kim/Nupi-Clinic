@@ -83,19 +83,6 @@ namespace Nupi_Clinic.ViewModel
                 OnPropertyChanged(nameof(SelectedAppointment));
             }
         }
-        public int AdminId
-        {
-            get { return selectedAppointment.AdminID; }
-            set
-            {
-                if (selectedAppointment.AdminID != value)
-                {
-                    selectedAppointment.AdminID = value;
-                    OnPropertyChanged(nameof(AdminId));
-
-                }
-            }
-        }
         public int DoctorId
         {
             get { return selectedAppointment.DoctorID; }
@@ -152,20 +139,19 @@ namespace Nupi_Clinic.ViewModel
         }
         private void AddAppointmentCommand()
         {
-            //if(Appointmentdate.HasValue)
-            //{
-            //    Appointments newapp = new Appointments
-            //    {
-            //        AdminID = AdminId,
-            //        DoctorID = DoctorId,
-            //        PatientID = PatientId,
-            //        AppointmentDate = Appointmentdate.Value
-            //    };
-            //    _repository.AddAppointment(newapp);
-            //    Appointments.Add(newapp);
-            //    MessageBox.Show("Appointment added successfully!");
-            //}
-            
+            if (Appointmentdate.HasValue)
+            {
+                Appointments newapp = new Appointments
+                {
+                    DoctorID = DoctorId,
+                    PatientID = PatientId,
+                    AppointmentDate = Appointmentdate.Value
+                };
+                _repository.AddAppointment(newapp);
+                Appointments.Add(newapp);
+                MessageBox.Show("Appointment added successfully!");
+            }
+
         }
     }
 }
