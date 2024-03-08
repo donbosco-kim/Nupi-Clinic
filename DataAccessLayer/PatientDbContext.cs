@@ -10,7 +10,7 @@ namespace Nupi_Clinic.DataAccessLayer
         public DbSet<Admin_Info> Admins { get; set; }
         public DbSet<Patients> Patients { get; set; }
         public DbSet<Doctors> Doctors { get; set; }
-        public  DbSet<Appointments> Appointments { get; set; }
+        public DbSet<Appointments> Appointments { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Patients>().HasKey(p => p.PatientID);

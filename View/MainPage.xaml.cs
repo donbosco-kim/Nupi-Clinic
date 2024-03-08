@@ -48,7 +48,7 @@ namespace Nupi_Clinic.View
 
         private void Schedule_Appointment_Click(object sender, RoutedEventArgs e)
         {
-
+            CC.Content = new AppointmentView();
         }
 
         private void Logout_Button_Click(object sender, RoutedEventArgs e)
