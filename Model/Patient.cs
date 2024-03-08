@@ -19,7 +19,10 @@ namespace Nupi_Clinic.Model
         public string? PhoneNumber { get; set; }
         public string? Address { get; set; }
 
-        public ICollection<Appointments> Appointments { get; set; }
+        public string FullName
+        {
+            get { return $"{FirstName} {LastName}"; }
+        }
 
     }
 }
