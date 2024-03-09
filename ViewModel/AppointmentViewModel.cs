@@ -22,7 +22,7 @@ namespace Nupi_Clinic.ViewModel
         private ObservableCollection<Patients> _patients;
         private Appointments selectedAppointment;
 
-        public AppointmentViewModel ()
+        public AppointmentViewModel()
         {
             _repository = new AppointmentRepository();
             appointments = new ObservableCollection<Appointments>();
@@ -36,7 +36,7 @@ namespace Nupi_Clinic.ViewModel
             LoadPatients();
             Appointmentdate = DateTime.Now;
         }
-        public RelayCommand SaveAppointmentCommand => new RelayCommand(execute => AddAppointmentCommand());
+        public RelayCommand ScheduleAppointmentCommand => new RelayCommand(execute => ScheduleAppointment());
         public ObservableCollection<Appointments> Appointments
         {
             get { return appointments; }
@@ -105,7 +105,6 @@ namespace Nupi_Clinic.ViewModel
                 {
                     selectedAppointment.PatientID = value;
                     OnPropertyChanged(nameof(PatientId));
-
                 }
             }
         }
@@ -117,6 +116,24 @@ namespace Nupi_Clinic.ViewModel
 
                 selectedAppointment.AppointmentDate = (DateTime)value!;
                 OnPropertyChanged(nameof(Appointmentdate));
+            }
+        }
+        public string? Doctorname
+        {
+            get { return selectedAppointment.DoctorName; }
+            set
+            {
+                selectedAppointment.DoctorName = value;
+                OnPropertyChanged(nameof(Doctorname));
+            }
+        }
+        public string? Patientname
+        {
+            get { return selectedAppointment.PatientName; }
+            set
+            {
+                selectedAppointment.PatientName = value;
+                OnPropertyChanged(nameof(Patientname));
             }
         }
 
@@ -137,21 +154,43 @@ namespace Nupi_Clinic.ViewModel
             var patientList = _prepository.GetAllPatients();
             Patients = new ObservableCollection<Patients>(patientList);
         }
-        private void AddAppointmentCommand()
+        private void ScheduleAppointment()
         {
-            if (Appointmentdate.HasValue)
+            if (string.IsNullOrWhiteSpace(Doctorname) || string.IsNullOrWhiteSpace(Patientname))
             {
-                Appointments newapp = new Appointments
-                {
-                    DoctorID = DoctorId,
-                    PatientID = PatientId,
-                    AppointmentDate = Appointmentdate.Value
-                };
-                _repository.AddAppointment(newapp);
-                Appointments.Add(newapp);
-                MessageBox.Show("Appointment added successfully!");
+                MessageBox.Show("Please fill up all the fields.");
+                return;
             }
 
+            // Check if Appointmentdate is selected
+            if (Appointmentdate == null)
+            {
+                MessageBox.Show("Please select appointment date.");
+                return;
+            }
+
+            // Create a new Appointment object
+            Appointments newAppointment = new Appointments
+            {
+                //hardcoded for now
+                AdminID = 1,
+                DoctorID = DoctorId,
+                PatientID = PatientId,
+                DoctorName = Doctorname,
+                PatientName = Patientname,
+                AppointmentDate = Appointmentdate.Value
+            };
+
+            // Add the new appointment to the database
+            _repository.AddAppointment(newAppointment);
+            Appointments.Add(newAppointment);
+
+            // Clear the selected values
+            Doctorname = "";
+            Patientname = "";
+            Appointmentdate = DateTime.Now;
+
+            MessageBox.Show("Appointment scheduled successfully!");
         }
     }
 }

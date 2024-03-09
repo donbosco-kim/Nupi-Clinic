@@ -22,48 +22,30 @@
                 <DataGridTextColumn Header="Appointment Date" Binding="{Binding AppointmentDate}" />
             </DataGrid.Columns>
         </DataGrid>
-        
-            <TextBlock Grid.Row="2" HorizontalAlignment="Left" Text="Add/Edit Appointment" FontWeight="Bold" Margin="10,10,0,0" />
-        
-            <StackPanel Grid.Row="2" Width="110" HorizontalAlignment="Left" Margin="0,30,0,0">
-            <Label Content="Doctor Name: "  Margin="0,0,0,5"/>
-            <Label Content="Patient Name: "  Margin="0,0,0,5"/>
-            <Label Content="Appointment Date: "  Margin="0,0,0,5"/>
+        <Label Grid.Row="2" Content="Add Appointment" HorizontalContentAlignment="Center" VerticalAlignment="Top" FontWeight="Bold" Margin="0,0,0,0" Height="30"/>
+        <StackPanel Grid.Row="2" HorizontalAlignment="Center" Orientation="Horizontal">
+            <StackPanel Margin="0,30,0,0">
+                <Label Content="Doctor ID: "  Margin="0,0,0,5"/>
+                <Label Content="Patient ID: "  Margin="0,0,0,5"/>
+                <Label Content="Doctor Name: "  Margin="0,0,0,5"/>
+                <Label Content="Patient Name: "  Margin="0,0,0,5"/>
+                <Label Content="Appointment Date: "  Margin="0,0,0,5"/>
             </StackPanel>
-            <StackPanel Grid.Row="2" Width="150" HorizontalAlignment="Right" Margin="0,30,440,0">
+            <StackPanel Width="150" Margin="0,30,0,0">
+                <TextBox Text="{Binding DoctorId}" Margin="0,5,0,10" />
+                <TextBox Text="{Binding PatientId}" Margin="0,0,0,10" />
                 <!--Doctor Name-->
                 <ComboBox ItemsSource="{Binding Doctors}" DisplayMemberPath="FullName" SelectedValuePath="DoctorID" SelectedValue="{Binding DoctorId}" Margin="0,0,0,10">
                 </ComboBox>
                 <!--Patient Name-->
-            <ComboBox ItemsSource="{Binding Patients}" DisplayMemberPath="FullName" SelectedValuePath="PatientID" SelectedValue="{Binding PatientId}"  Margin="0,0,0,10">
+                <ComboBox ItemsSource="{Binding Patients}" DisplayMemberPath="FullName" SelectedValuePath="PatientID" SelectedValue="{Binding PatientId}"  Margin="0,0,0,10">
                 </ComboBox>
                 <!--Appointment Date-->
-            <DatePicker Text="{Binding Appointmentdate}"  Margin="0,0,0,5">
+                <DatePicker Text="{Binding Appointmentdate}"  Margin="0,0,0,5">
                 </DatePicker>
-            <Button Grid.Row="2" Content="Save" Command="{Binding SaveAppointmentCommand}" Width="80" Margin="0,10,0,0" />
+                <Button Grid.Row="2" Content="Schedule" Command="{Binding ScheduleAppointmentCommand}" Width="80" Margin="0,5,0,0" />
+            </StackPanel>
+
         </StackPanel>
-            
-            
-            <StackPanel Grid.Row="2" HorizontalAlignment="Right" Orientation="Vertical" Margin="10">
-            <TextBlock Text="Add/Edit Appointment" FontWeight="Bold" Margin="0,0,0,10" />
-
-            <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
-                <TextBlock Text="Doctor ID:" Width="80" VerticalAlignment="Center" />
-                <TextBox Text="{Binding DoctorId}" Width="120" />
-            </StackPanel>
-
-            <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
-                <TextBlock Text="Patient ID:" Width="80" VerticalAlignment="Center" />
-                <TextBox Text="{Binding PatientId}" Width="120" />
-            </StackPanel>
-
-            <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
-                <TextBlock Text="Date and Time:" Width="80" VerticalAlignment="Center" />
-                <DatePicker Text="{Binding Appointmentdate}" Width="120" />
-            </StackPanel>
-
-            
-        </StackPanel>
-
     </Grid>
 </UserControl>
