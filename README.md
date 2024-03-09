@@ -9,11 +9,10 @@ Nupi-Clinic is a clinic management application built using WPF, SQL database, an
 - Password Hashing: Utilizes the SHA256 algorithm to hash passwords before storing them in the database for enhanced security.
 
 - SQL Database Interaction: Repositories are implemented to communicate with the SQL database for easier data management.
+- Appointment Management: Implement a feature for scheduling and managing appointments between patients and doctors.
 
 ## Features to be Implemented
 As of now, the Nupi-Clinic project includes essential features for clinic management. However, there are plans to improve the application with the following features:
-
-- Appointment Management: Implement a feature for scheduling and managing appointments between patients and doctors.
 
 - Enhanced Admin Login Security: Implement character checking and length validation for admin usernames and passwords.
 
